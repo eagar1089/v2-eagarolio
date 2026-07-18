@@ -63,9 +63,13 @@ export function MissionLog() {
       />
 
       <div className="relative mt-12 sm:mt-14">
-        <div className="grid gap-6 md:grid-cols-2 md:gap-7">
-          {missionLog.map((m) => (
-            <MissionEntry key={m.id} entry={m} />
+        <div
+          className="absolute bottom-6 left-4 top-6 w-px bg-gradient-to-b from-transparent via-[#22d3ee]/45 to-transparent md:left-1/2 md:-translate-x-1/2"
+          aria-hidden="true"
+        />
+        <div className="space-y-7 md:space-y-9">
+          {missionLog.map((m, index) => (
+            <MissionEntry key={m.id} entry={m} index={index} />
           ))}
         </div>
       </div>
@@ -73,7 +77,7 @@ export function MissionLog() {
   );
 }
 
-function MissionEntry({ entry }: { entry: typeof missionLog[0] }) {
+function MissionEntry({ entry, index }: { entry: typeof missionLog[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10% 0px" });
 
@@ -83,17 +87,21 @@ function MissionEntry({ entry }: { entry: typeof missionLog[0] }) {
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="relative pl-12"
+      className="relative grid min-w-0 grid-cols-[2rem_minmax(0,1fr)] gap-4 md:grid-cols-[minmax(0,1fr)_3.5rem_minmax(0,1fr)] md:gap-0"
     >
       {/* Timeline dot */}
-      <div className="absolute left-5 top-6 z-10 -translate-x-1/2">
+      <div className="relative z-10 col-start-1 row-start-1 flex justify-center pt-6 md:col-start-2">
         <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[#22d3ee]/40 bg-[#070B12]">
           <div className="h-2.5 w-2.5 rounded-full bg-[#22d3ee] shadow-[0_0_12px_rgba(34,211,238,0.6)]" />
         </div>
       </div>
 
-      {/* Content card - full width on mobile, half-width alternating on desktop */}
-      <div className="min-w-0">
+      {/* Content card - connected timeline on desktop, single rail on mobile */}
+      <div
+        className={`col-start-2 row-start-1 min-w-0 md:col-span-1 ${
+          index % 2 === 0 ? "md:col-start-1 md:pr-7" : "md:col-start-3 md:pl-7"
+        }`}
+      >
         <div className="panel h-full p-5 hover:-translate-y-1">
           {/* Header */}
           <div className="flex flex-wrap items-center gap-2">

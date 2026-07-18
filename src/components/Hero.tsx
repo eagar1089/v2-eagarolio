@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
-import SGRLogo from './SGRLogo';
+import { SGRLogo } from './brand/SGRLogo';
 import { PORTFOLIO_CONFIG } from '@/config/portfolio';
 import { useReducedMotion } from '@/lib/motion';
 
@@ -75,8 +75,13 @@ export default function SystemBootHero() {
         <div className="flex flex-col items-center text-center">
           {/* Logo */}
           <AnimatedChild index={0}>
-            <div className="mb-6 sm:mb-8">
-              <SGRLogo size={104} variant="hero" className="sm:h-[120px] sm:w-[120px]" />
+            <div className="mb-6 flex justify-center sm:mb-8">
+              <SGRLogo
+                size={156}
+                intensity={0.8}
+                interactive={false}
+                className="h-[132px] w-[132px] sm:h-[156px] sm:w-[156px]"
+              />
             </div>
           </AnimatedChild>
 
