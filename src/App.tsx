@@ -3,7 +3,6 @@ import { AnimatePresence } from 'framer-motion';
 import BackgroundSystem from './components/Background';
 import PortfolioPreloader from './components/Preloader';
 import SystemBootHero from './components/Hero';
-import IdentityTerminal from './components/Terminal';
 import InfrastructureMap from './components/InfrastructureMap';
 import CapabilityConstellation from './components/SkillsConstellation';
 import ProjectMissionControl from './components/Projects';
@@ -15,6 +14,7 @@ import { ResumeConsole, CommunicationUplink } from './components/ResumeContact';
 import Footer from './components/ResumeContact';
 import SideRails from './components/SideRails';
 import MobileNavigation from './components/MobileNav';
+import CustomCursor from './components/CustomCursor';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -36,6 +36,7 @@ export default function App() {
     <div className="relative min-h-screen">
       {/* Background */}
       <BackgroundSystem />
+      <CustomCursor />
 
       {/* Preloader */}
       <AnimatePresence>
@@ -60,14 +61,11 @@ export default function App() {
       <SideRails />
 
       {/* Main content */}
-      <main id="main-content" className="relative z-10">
+      <main id="main-content" className="portfolio-main relative z-10">
         {/* 1. System Boot Hero */}
         <SystemBootHero />
 
-        {/* 2. Identity Terminal */}
-        <IdentityTerminal />
-
-        {/* 3. Infrastructure Command Centre */}
+        {/* 2. Infrastructure Command Centre */}
         <InfrastructureMap />
 
         {/* 4. Capability Constellation */}

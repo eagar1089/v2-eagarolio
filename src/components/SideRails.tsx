@@ -10,8 +10,10 @@ const GithubIcon = ({ size = 16 }: { size?: number }) => (
 const LinkedinIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
 );
-const MailIcon = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+const CodepenIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+  > <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2" /> <line x1="12" y1="2" x2="12" y2="8.5" /> <line x1="12" y1="15.5" x2="12" y2="22" /> <polyline points="22 8.5 12 15.5 2 8.5" /> <polyline points="2 15.5 12 8.5 22 15.5" />
+  </svg>
 );
 const FileTextIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
@@ -37,7 +39,7 @@ export default function SideRails() {
   const socialLinks = [
     { icon: GithubIcon, url: PORTFOLIO_CONFIG.socialLinks.find(s => s.icon === 'github')?.url || '#', label: 'GitHub' },
     { icon: LinkedinIcon, url: PORTFOLIO_CONFIG.socialLinks.find(s => s.icon === 'linkedin')?.url || '#', label: 'LinkedIn' },
-    { icon: MailIcon, url: PORTFOLIO_CONFIG.socialLinks.find(s => s.icon === 'mail')?.url || '#', label: 'Email' },
+    { icon: CodepenIcon, url: PORTFOLIO_CONFIG.socialLinks.find(s => s.icon === 'codepen')?.url || '#', label: 'Codepen' },
     { icon: FileTextIcon, url: PORTFOLIO_CONFIG.resumePath, label: 'Resume' },
   ];
 

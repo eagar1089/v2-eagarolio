@@ -92,7 +92,7 @@ export default function ArchitectureExplorer() {
   }, []);
 
   return (
-    <section id="architecture" className="py-20 px-6">
+    <section id="architecture" className="px-4 py-14 sm:px-6 sm:py-20">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-center">
           <span className="text-xs font-mono text-[#144552] uppercase tracking-widest">Architecture Explorer</span>
@@ -105,12 +105,12 @@ export default function ArchitectureExplorer() {
         </div>
 
         {/* Flow selector */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="mb-8 flex snap-x gap-2 overflow-x-auto pb-2 sm:mb-10 sm:flex-wrap sm:justify-center sm:overflow-visible">
           {FLOWS.map(flow => (
             <button
               key={flow.id}
               onClick={() => handleSelect(flow)}
-              className={`px-4 py-2 text-xs font-mono rounded-lg border transition-all duration-300 ${
+              className={`shrink-0 snap-start px-4 py-2 text-xs font-mono rounded-lg border transition-all duration-300 ${
                 selectedFlow.id === flow.id
                   ? 'text-white bg-[#0C121D] border-[#00D4AA]'
                   : 'text-[#7D8590] border-[#1B3A4B] hover:border-[#3E1F47] hover:text-[#B8C2CC] bg-transparent'
@@ -123,7 +123,7 @@ export default function ArchitectureExplorer() {
         </div>
 
         {/* Architecture diagram */}
-        <div className="bg-[#0C121D] rounded-xl border border-[#1B3A4B] p-6 mb-6">
+        <div className="mb-6 rounded-xl border border-[#1B3A4B] bg-[#0C121D]/80 p-3 backdrop-blur-xl sm:p-6">
           <p className="text-xs text-[#7D8590] mb-8 text-center">{selectedFlow.description}</p>
 
           {/* Flow diagram */}

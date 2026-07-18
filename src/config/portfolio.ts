@@ -98,7 +98,7 @@ export const PORTFOLIO_CONFIG = {
   ],
   tagline: 'Building reliable systems behind modern digital experiences.',
   bio: 'I design infrastructure tools, automation workflows, monitoring platforms, and operational dashboards that turn complex systems into clear, dependable experiences.',
-  email: 'sagar.parab@email.com',
+  email: 'sgrp9801@gmail.com',
   location: 'India',
   github: 'eagar1089',
   linkedin: 'https://www.linkedin.com/in/sagarparab0189',

@@ -40,7 +40,7 @@ export default function SystemBootHero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen min-h-[100svh] items-center justify-center overflow-hidden py-24 sm:py-28 lg:py-20"
       onMouseMove={handleMouseMove}
     >
       {/* Aurora background layer - responsive */}
@@ -70,18 +70,18 @@ export default function SystemBootHero() {
         <circle cx="50%" cy="55%" r="2" fill="#00D4AA" />
       </svg>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           {/* Logo */}
           <AnimatedChild index={0}>
-            <div className="mb-8">
-              <SGRLogo size={120} variant="hero" />
+            <div className="mb-6 sm:mb-8">
+              <SGRLogo size={104} variant="hero" className="sm:h-[120px] sm:w-[120px]" />
             </div>
           </AnimatedChild>
 
           {/* Name */}
           <AnimatedChild index={1}>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-4">
+            <h1 className="text-4xl font-bold tracking-tight mb-4 sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="bg-gradient-to-r from-white via-[#B8C2CC] to-[#7D8590] bg-clip-text text-transparent">
                 {PORTFOLIO_CONFIG.name}
               </span>
@@ -126,7 +126,7 @@ export default function SystemBootHero() {
 
           {/* CTAs */}
           <AnimatedChild index={7}>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href={`https://github.com/${PORTFOLIO_CONFIG.github}`}
                 target="_blank"
