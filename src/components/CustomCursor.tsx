@@ -6,6 +6,8 @@ export default function CustomCursor() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (!finePointer.matches || reducedMotion.matches) return;
 
+    document.body.classList.add('custom-cursor');
+
     const dot = document.createElement('div');
     const ring = document.createElement('div');
     const label = document.createElement('span');
@@ -61,6 +63,7 @@ export default function CustomCursor() {
       window.removeEventListener('mousemove', handleMove);
       window.removeEventListener('click', handleClick);
       cancelAnimationFrame(frame);
+      document.body.classList.remove('custom-cursor');
       dot.remove();
       ring.remove();
       label.remove();

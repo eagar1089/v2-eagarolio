@@ -241,29 +241,25 @@ body {
 
 /* Option A-inspired custom cursor and click ripple */
 .cursor-dot {
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  background: #FFFFFF;
+  width: 6px;
+  height: 6px;
+  background: #00D4AA;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
-  z-index: 2147483647;
+  z-index: 100000;
   transition: transform 0.1s ease, opacity 0.2s ease;
-  box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.75), 0 0 16px rgba(0, 212, 170, 0.9);
+  mix-blend-mode: difference;
 }
 
 .cursor-ring {
-  top: 0;
-  left: 0;
   width: 28px;
   height: 28px;
-  border: 1.5px solid rgba(0, 212, 170, 0.8);
+  border: 1px solid rgba(0, 212, 170, 0.55);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
-  z-index: 2147483646;
+  z-index: 100000;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   transition: width 180ms ease, height 180ms ease, border-color 180ms ease;
@@ -276,11 +272,9 @@ body {
 }
 
 .cursor-label {
-  top: 0;
-  left: 0;
   position: fixed;
   pointer-events: none;
-  z-index: 2147483647;
+  z-index: 100001;
   color: #00D4AA;
   font-size: 10px;
   font-family: 'JetBrains Mono', monospace;
@@ -296,7 +290,7 @@ body {
 
 .cursor-ripple {
   position: fixed;
-  z-index: 2147483645;
+  z-index: 99999;
   width: 12px;
   height: 12px;
   border: 1px solid rgba(0, 212, 170, 0.85);
@@ -309,6 +303,13 @@ body {
 @keyframes cursorRipple {
   from { opacity: 0.9; transform: translate(-50%, -50%) scale(0.4); }
   to { opacity: 0; transform: translate(-50%, -50%) scale(5); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor * {
+    cursor: none !important;
+  }
 }
 
 /* Phone, tablet, and laptop layout safeguards */
