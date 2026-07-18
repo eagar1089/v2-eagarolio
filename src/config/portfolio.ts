@@ -61,6 +61,7 @@ export interface RCAMethod {
 
 export interface GitHubRepo {
   name: string;
+  owner: string;
   description: string | null;
   html_url: string;
   stargazers_count: number;
@@ -89,7 +90,7 @@ export interface GitHubUser {
 export const PORTFOLIO_CONFIG = {
   name: 'Sagar Parab',
   brand: 'S9r',
-  role: 'Linux Administrator',
+  role: 'Software Engineer',
   subRoles: [
     'Linux Administrator',
     'Automation Specialist',
@@ -107,14 +108,32 @@ export const PORTFOLIO_CONFIG = {
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/sagarparab0189', icon: 'linkedin' },
     { name: 'Codepen', url: 'https://codepen.io/eagar1089', icon: 'codepen' },
   ] as SocialLink[],
-  resumePath: '/resume/Sagar_Parab_Resume.pdf',
-  featuredRepos: [
-    'cron-monitoring-platform',
-    'f5-liveops-dashboard',
-    'server-inventory-platform',
-    'rca-research',
-    'infra-collector',
-  ],
+  resumePath: '/resume/SagarParab-Resume.pdf',
   logoAnimationIntensity: 'medium',
   backgroundEffectIntensity: 'low',
+} as const;
+
+// Compatibility shape for the selected Option A sections.
+export const portfolio = {
+  name: PORTFOLIO_CONFIG.name,
+  email: PORTFOLIO_CONFIG.email,
+  bio: PORTFOLIO_CONFIG.bio,
+  titles: { primary: PORTFOLIO_CONFIG.role },
+  focus: PORTFOLIO_CONFIG.subRoles,
+  resume: {
+    path: PORTFOLIO_CONFIG.resumePath,
+    available: true,
+  },
+  social: {
+    github: {
+      username: PORTFOLIO_CONFIG.github,
+      url: `https://github.com/${PORTFOLIO_CONFIG.github}`,
+    },
+    linkedin: {
+      username: 'sagarparab0189',
+      url: PORTFOLIO_CONFIG.linkedin,
+    },
+  },
+  availability: { label: 'Available for selected opportunities' },
+  contact: { recipient: PORTFOLIO_CONFIG.email },
 } as const;

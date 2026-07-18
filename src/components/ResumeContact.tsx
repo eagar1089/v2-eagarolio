@@ -234,9 +234,6 @@ export function CommunicationUplink() {
                 >
                   {formState === 'sending' ? 'Transmitting...' : 'Send Message'}
                 </button>
-                <p className="text-[9px] font-mono text-[#3E1F47] text-center">
-                  Note: Connect a backend service (e.g., Formspree, Netlify Forms) to receive messages.
-                </p>
               </form>
             )}
           </div>

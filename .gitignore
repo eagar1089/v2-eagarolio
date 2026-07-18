@@ -1,8 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-/optionA
-/optionB
-
+# Local design source options - never publish these folders
+/optionA/
+/optionB/
 
 # dependencies
 /node_modules

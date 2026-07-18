@@ -57,7 +57,6 @@ export const missionLog: MissionEntry[] = [
       "distributed-cron-monitoring",
       "f5-liveops",
       "server-inventory-platform",
-      "ai-rca-research",
       "infrastructure-data-collector",
     ],
   },

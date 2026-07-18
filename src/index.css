@@ -54,6 +54,18 @@ body {
   overflow-x: hidden;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(0, 212, 170, 0.055), transparent 30%),
+    radial-gradient(circle at 88% 55%, rgba(123, 97, 255, 0.05), transparent 34%),
+    linear-gradient(180deg, #070B12 0%, #080d16 48%, #070B12 100%);
+}
+
 .no-scroll {
   overflow: hidden !important;
   height: 100vh !important;
@@ -217,6 +229,20 @@ body {
   outline-offset: 3px;
 }
 
+/* Option A glass panel used by the selected timeline and resume sections */
+.panel {
+  border-radius: 0.875rem;
+  background: linear-gradient(145deg, rgba(17, 24, 39, 0.56), rgba(12, 18, 29, 0.28));
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  backdrop-filter: blur(18px) saturate(125%);
+  transition: background 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+}
+
+.panel:hover {
+  background: linear-gradient(145deg, rgba(17, 24, 39, 0.72), rgba(12, 18, 29, 0.4));
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+}
+
 /* Card lighting */
 .card-light {
   position: relative;
@@ -241,25 +267,29 @@ body {
 
 /* Option A-inspired custom cursor and click ripple */
 .cursor-dot {
-  width: 6px;
-  height: 6px;
-  background: #00D4AA;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: #FFFFFF;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
-  z-index: 100000;
+  z-index: 2147483647;
   transition: transform 0.1s ease, opacity 0.2s ease;
-  mix-blend-mode: difference;
+  box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.75), 0 0 16px rgba(0, 212, 170, 0.9);
 }
 
 .cursor-ring {
+  top: 0;
+  left: 0;
   width: 28px;
   height: 28px;
-  border: 1px solid rgba(0, 212, 170, 0.55);
+  border: 1.5px solid rgba(0, 212, 170, 0.8);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
-  z-index: 100000;
+  z-index: 2147483646;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   transition: width 180ms ease, height 180ms ease, border-color 180ms ease;
@@ -272,9 +302,11 @@ body {
 }
 
 .cursor-label {
+  top: 0;
+  left: 0;
   position: fixed;
   pointer-events: none;
-  z-index: 100001;
+  z-index: 2147483647;
   color: #00D4AA;
   font-size: 10px;
   font-family: 'JetBrains Mono', monospace;
@@ -290,7 +322,7 @@ body {
 
 .cursor-ripple {
   position: fixed;
-  z-index: 99999;
+  z-index: 2147483645;
   width: 12px;
   height: 12px;
   border: 1px solid rgba(0, 212, 170, 0.85);
@@ -305,17 +337,54 @@ body {
   to { opacity: 0; transform: translate(-50%, -50%) scale(5); }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body.custom-cursor,
-  body.custom-cursor * {
-    cursor: none !important;
-  }
-}
-
-/* Phone, tablet, and laptop layout safeguards */
-.portfolio-main > section {
+/* Immersive page rhythm and section flow */
+.portfolio-main > section:not(#hero) {
+  position: relative;
+  isolation: isolate;
+  width: min(calc(100% - 2rem), 1280px);
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-block: clamp(5rem, 10vw, 10rem) !important;
+  padding-inline: 0 !important;
   min-width: 0;
   scroll-margin-top: 4.5rem;
+}
+
+.portfolio-main > section:not(#hero)::before {
+  content: '';
+  position: absolute;
+  inset: 8% -8% 6%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+  background: radial-gradient(ellipse at 20% 38%, rgba(0, 212, 170, 0.075), transparent 42%);
+}
+
+.portfolio-main > section:nth-of-type(even)::before {
+  background: radial-gradient(ellipse at 82% 46%, rgba(123, 97, 255, 0.065), transparent 44%);
+}
+
+.portfolio-main > section:not(#hero)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 194, 204, 0.13), transparent);
+}
+
+.immersive-section {
+  opacity: 0;
+  transform: translateY(34px);
+  filter: blur(7px);
+  transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 800ms ease;
+}
+
+.immersive-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 .portfolio-main img,
@@ -331,21 +400,15 @@ body {
 }
 
 @media (max-width: 639px) {
-  .portfolio-main > section:not(#hero) {
-    padding-block: 3.5rem;
-    padding-inline: 1rem;
-  }
-
   .glass-button {
     width: 100%;
     min-height: 46px;
   }
 }
 
-@media (min-width: 640px) and (max-width: 1023px) {
+@media (min-width: 1024px) {
   .portfolio-main > section:not(#hero) {
-    padding-block: 4.5rem;
-    padding-inline: 1.5rem;
+    width: min(calc(100% - 8rem), 1280px);
   }
 }
 
@@ -406,6 +469,12 @@ body {
   .breathe-glow {
     animation: none !important;
     opacity: 0.6;
+  }
+
+  .immersive-section {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 }
 

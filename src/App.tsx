@@ -3,14 +3,12 @@ import { AnimatePresence } from 'framer-motion';
 import BackgroundSystem from './components/Background';
 import PortfolioPreloader from './components/Preloader';
 import SystemBootHero from './components/Hero';
-import InfrastructureMap from './components/InfrastructureMap';
-import CapabilityConstellation from './components/SkillsConstellation';
+import TechStackMap from './components/InfrastructureMap';
 import ProjectMissionControl from './components/Projects';
-import ArchitectureExplorer from './components/ArchitectureExplorer';
 import GitHubIntelligence from './components/GitHubSection';
-import MissionLog from './components/MissionLog';
-import RCALab from './components/RCALab';
-import { ResumeConsole, CommunicationUplink } from './components/ResumeContact';
+import { MissionLog } from './components/experience/MissionLog';
+import { ResumeConsole } from './components/resume/ResumeConsole';
+import { CommunicationUplink } from './components/ResumeContact';
 import Footer from './components/ResumeContact';
 import SideRails from './components/SideRails';
 import MobileNavigation from './components/MobileNav';
@@ -25,6 +23,31 @@ export default function App() {
     if (hasVisited) {
       setLoading(false);
     }
+  }, []);
+
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('.portfolio-main > section:not(#hero)'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    sections.forEach((section) => section.classList.add('immersive-section'));
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      sections.forEach((section) => section.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.08 }
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   const handlePreloadComplete = useCallback(() => {
@@ -65,28 +88,19 @@ export default function App() {
         {/* 1. System Boot Hero */}
         <SystemBootHero />
 
-        {/* 2. Infrastructure Command Centre */}
-        <InfrastructureMap />
+        {/* 2. Technology Stack */}
+        <TechStackMap />
 
-        {/* 4. Capability Constellation */}
-        <CapabilityConstellation />
-
-        {/* 5. Project Mission Control */}
+        {/* 3. Project Mission Control */}
         <ProjectMissionControl />
 
-        {/* 6. Architecture Explorer */}
-        <ArchitectureExplorer />
-
-        {/* 7. GitHub Intelligence */}
+        {/* 4. GitHub Intelligence */}
         <GitHubIntelligence />
 
         {/* 7. Career Mission Log */}
         <MissionLog />
 
-        {/* 8. RCA Research Lab */}
-        <RCALab />
-
-        {/* 9. Resume Console */}
+        {/* 6. Resume Console */}
         <ResumeConsole />
 
         {/* 10. Communication Uplink */}

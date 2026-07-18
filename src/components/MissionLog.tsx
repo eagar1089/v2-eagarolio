@@ -84,9 +84,9 @@ export default function MissionLog() {
   }, []);
 
   return (
-    <section id="experience" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-12 text-center">
+    <section id="experience" className="px-4 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20 xl:px-16">
+      <div className="mx-auto w-full max-w-5xl">
+        <div className="mb-8 text-center sm:mb-10">
           <span className="text-xs font-mono text-[#0B525B] uppercase tracking-widest">06 - Mission Log</span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
             Career Mission Log
@@ -97,7 +97,7 @@ export default function MissionLog() {
         </div>
 
         {/* Release grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
           {RELEASES.map((release) => {
             const isActive = selectedRelease === release.version;
             const Icon = release.icon;
@@ -105,14 +105,14 @@ export default function MissionLog() {
               <button
                 key={release.version}
                 onClick={() => handleSelect(release.version)}
-                className={`text-left p-5 rounded-xl border transition-all duration-300 ${
+                className={`min-w-0 text-left p-4 sm:p-[18px] rounded-xl border transition-all duration-300 ${
                   isActive
                     ? 'bg-[#0C121D] border-[#00D4AA] shadow-[0_0_20px_rgba(0,212,170,0.1)]'
                     : 'bg-[#0C121D] border-[#1B3A4B] hover:border-[#3E1F47]'
                 }`}
                 aria-pressed={isActive}
               >
-                <div className="flex items-center gap-3 mb-3">
+                <div className="mb-2.5 flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-[#070B12] flex items-center justify-center border border-[#1B3A4B]">
                     <Icon size={14} />
                   </div>
@@ -122,9 +122,9 @@ export default function MissionLog() {
                   </div>
                 </div>
 
-                <p className="text-[11px] text-[#7D8590] mb-3">{release.focus}</p>
+                <p className="mb-2.5 text-[11px] leading-relaxed text-[#7D8590]">{release.focus}</p>
 
-                <div className="flex flex-wrap gap-1 mb-3">
+                <div className="mb-2 flex flex-wrap gap-1">
                   {release.systems.slice(0, 3).map(s => (
                     <span key={s} className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#070B12] text-[#B8C2CC] border border-[#1B3A4B]">
                       {s}

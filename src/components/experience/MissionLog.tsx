@@ -53,7 +53,7 @@ export function MissionLog() {
   return (
     <section
       id="mission-log"
-      className="relative mx-auto w-full max-w-5xl px-4 py-20 sm:px-6 sm:py-24 lg:px-0"
+      className="relative mx-auto w-full max-w-6xl"
       aria-label="Career mission log"
     >
       <SectionHeader
@@ -62,13 +62,10 @@ export function MissionLog() {
         description="Key phases of focus, systems worked on, tools used, and lessons learned along the way."
       />
 
-      <div className="mt-12 relative sm:mt-16">
-        {/* Vertical line - left on mobile, center on desktop */}
-        <div className="absolute left-5 top-4 bottom-0 w-px bg-gradient-to-b from-[#22d3ee]/60 via-[#a855f7]/40 to-[#10b981]/20 sm:left-1/2" />
-
-        <div className="space-y-10 sm:space-y-14">
-          {missionLog.map((m, i) => (
-            <MissionEntry key={m.id} entry={m} index={i} />
+      <div className="relative mt-12 sm:mt-14">
+        <div className="grid gap-6 md:grid-cols-2 md:gap-7">
+          {missionLog.map((m) => (
+            <MissionEntry key={m.id} entry={m} />
           ))}
         </div>
       </div>
@@ -76,7 +73,7 @@ export function MissionLog() {
   );
 }
 
-function MissionEntry({ entry, index }: { entry: typeof missionLog[0]; index: number }) {
+function MissionEntry({ entry }: { entry: typeof missionLog[0] }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10% 0px" });
 
@@ -86,23 +83,18 @@ function MissionEntry({ entry, index }: { entry: typeof missionLog[0]; index: nu
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="relative pl-14 sm:pl-0"
+      className="relative pl-12"
     >
       {/* Timeline dot */}
-      <div className="absolute left-5 top-6 z-10 -translate-x-1/2 sm:left-1/2">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#22d3ee]/40 bg-[#070B12]">
-          <div className="h-3 w-3 rounded-full bg-[#22d3ee] shadow-[0_0_12px_rgba(34,211,238,0.6)]" />
+      <div className="absolute left-5 top-6 z-10 -translate-x-1/2">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[#22d3ee]/40 bg-[#070B12]">
+          <div className="h-2.5 w-2.5 rounded-full bg-[#22d3ee] shadow-[0_0_12px_rgba(34,211,238,0.6)]" />
         </div>
       </div>
 
       {/* Content card - full width on mobile, half-width alternating on desktop */}
-      <div
-        className={`
-          ml-0 sm:ml-0 sm:w-[calc(50%-32px)]
-          ${index % 2 === 0 ? "sm:mr-auto sm:pr-10" : "sm:ml-auto sm:pl-10"}
-        `}
-      >
-        <div className="panel p-5 sm:p-6">
+      <div className="min-w-0">
+        <div className="panel h-full p-5 hover:-translate-y-1">
           {/* Header */}
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full border border-[#22d3ee]/40 bg-[#22d3ee]/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.25em] text-[#22d3ee]">
@@ -110,7 +102,7 @@ function MissionEntry({ entry, index }: { entry: typeof missionLog[0]; index: nu
             </span>
           </div>
 
-          <h3 className="mt-3 font-display text-xl font-semibold text-white sm:text-2xl">
+          <h3 className="mt-3 font-display text-lg font-semibold text-white sm:text-xl">
             {entry.title}
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-[#B8C2CC]">{entry.focus}</p>
@@ -194,8 +186,6 @@ function MissionEntry({ entry, index }: { entry: typeof missionLog[0]; index: nu
         </div>
       </div>
 
-      {/* Spacer for the other side on desktop */}
-      <div className="hidden sm:block sm:w-[calc(50%-32px)]" />
     </motion.div>
   );
 }

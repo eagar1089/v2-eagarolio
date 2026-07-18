@@ -29,9 +29,9 @@ const INFRA_NODES: InfraNode[] = [
     name: 'Automation',
     icon: Cpu,
     tools: ['Bash', 'Python', 'Cron', 'Systemd', 'REST APIs', 'CI/CD'],
-    responsibilities: ['Infrastructure automation', 'Server-side automation', 'Deployment workflows', 'Scheduled tasks'],
+    responsibilities: ['TechStack automation', 'Server-side automation', 'Deployment workflows', 'Scheduled tasks'],
     projects: ['Data Collector', 'Cron Monitoring', 'Server Inventory'],
-    learning: ['Go-based agents', 'Infrastructure as Code', 'Policy automation'],
+    learning: ['Go-based agents', 'TechStack as Code', 'Policy automation'],
     color: '#7B61FF',
   },
   {
@@ -79,7 +79,7 @@ const INFRA_NODES: InfraNode[] = [
     name: 'Networking',
     icon: Wifi,
     tools: ['Nginx', 'F5 BIG-IP', 'HTTP/S', 'VIPs', 'Load balancing'],
-    responsibilities: ['F5 infrastructure management', 'Load balancer configuration', 'VIP management', 'Traffic routing'],
+    responsibilities: ['F5 TechStack management', 'Load balancer configuration', 'VIP management', 'Traffic routing'],
     projects: ['F5 LiveOps'],
     learning: ['Service mesh', 'Advanced L4/L7', 'Traffic management'],
     color: '#1B3A4B',
@@ -89,14 +89,14 @@ const INFRA_NODES: InfraNode[] = [
     name: 'DevOps',
     icon: Cloud,
     tools: ['Docker', 'Docker Compose', 'Git', 'GitHub', 'CI/CD', 'Nginx deployments'],
-    responsibilities: ['Containerisation', 'Environment management', 'Deployment automation', 'Infrastructure monitoring'],
+    responsibilities: ['Containerisation', 'Environment management', 'Deployment automation', 'TechStack monitoring'],
     projects: ['Server Inventory', 'Data Collector', 'Cron Monitoring'],
     learning: ['Kubernetes', 'Terraform', 'Cloud platforms'],
     color: '#0B525B',
   },
 ];
 
-export default function InfrastructureMap() {
+export default function TechStackMap() {
   const [selectedNode, setSelectedNode] = useState<InfraNode | null>(null);
 
   const handleSelect = useCallback((node: InfraNode) => {
@@ -115,23 +115,23 @@ export default function InfrastructureMap() {
   ];
 
   return (
-    <section id="infrastructure" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="tech-stack" className="px-4 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20 xl:px-16" aria-label="Technology stack">
+      <div className="mx-auto w-full max-w-7xl">
         {/* Header */}
-        <div className="mb-12 text-center">
-          <span className="text-xs font-mono text-[#00D4AA] uppercase tracking-widest">02 - Command Centre</span>
+        <div className="mb-8 text-center sm:mb-10">
+          <span className="text-xs font-mono text-[#00D4AA] uppercase tracking-widest">02 - Tech Stack</span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
-            Infrastructure Command Centre
+            Technology Stack
           </h2>
-          <p className="text-[#7D8590] max-w-xl mx-auto">
-            Interactive system map of engineering capabilities. Select a node to explore tools, responsibilities, and related projects.
+          <p className="text-sm text-[#7D8590] max-w-xl mx-auto">
+            An interactive map of the technologies, platforms, and engineering tools used across my projects.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.85fr)_minmax(280px,1fr)] lg:gap-6">
           {/* System Map */}
-          <div className="lg:col-span-2">
-            <div className="relative aspect-[4/3] bg-[#0C121D] rounded-xl border border-[#1B3A4B] overflow-hidden p-4">
+          <div className="min-w-0">
+            <div className="relative aspect-[4/3] max-h-[540px] min-h-[360px] overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_50%,rgba(0,100,102,0.08),transparent_58%)] p-3 sm:p-4">
               {/* Connection lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
                 {INFRA_NODES.map((node, i) => {
@@ -167,7 +167,7 @@ export default function InfrastructureMap() {
                     aria-label={`Select ${node.name}`}
                   >
                     <div
-                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center border transition-all duration-300 ${
+                      className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300 sm:h-12 sm:w-12 ${
                         isSelected
                           ? 'bg-[#0C121D] border-[#00D4AA] shadow-[0_0_20px_rgba(0,212,170,0.2)]'
                           : 'bg-[#070B12] border-[#1B3A4B] hover:border-[#00D4AA] hover:shadow-[0_0_15px_rgba(0,100,102,0.15)]'
@@ -187,14 +187,14 @@ export default function InfrastructureMap() {
           </div>
 
           {/* Detail Panel */}
-          <div className="bg-[#0C121D] rounded-xl border border-[#1B3A4B] p-6 overflow-hidden">
+          <div className="min-w-0 overflow-hidden border-t border-white/10 bg-gradient-to-br from-white/[0.035] to-transparent p-4 backdrop-blur-xl sm:p-5 lg:border-l lg:border-t-0 lg:pl-7">
             {selectedNode ? (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-center gap-3 mb-6">
+                <div className="mb-5 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ borderColor: selectedNode.color }}>
                     <span style={{ color: selectedNode.color }}><selectedNode.icon size={18} /></span>
                   </div>
@@ -206,7 +206,7 @@ export default function InfrastructureMap() {
                   </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3.5">
                   <div>
                     <h4 className="text-[10px] font-mono text-[#7D8590] uppercase tracking-wider mb-2">Tools</h4>
                     <div className="flex flex-wrap gap-1">

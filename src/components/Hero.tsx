@@ -9,6 +9,7 @@ function AnimatedChild({ children, index }: { children: React.ReactNode; index: 
   const reducedMotion = useReducedMotion();
   return (
     <motion.div
+      className="w-full min-w-0"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -81,7 +82,7 @@ export default function SystemBootHero() {
 
           {/* Name */}
           <AnimatedChild index={1}>
-            <h1 className="text-4xl font-bold tracking-tight mb-4 sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="mb-4 text-4xl font-bold tracking-[-0.04em] drop-shadow-[0_12px_45px_rgba(0,212,170,0.12)] sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="bg-gradient-to-r from-white via-[#B8C2CC] to-[#7D8590] bg-clip-text text-transparent">
                 {PORTFOLIO_CONFIG.name}
               </span>
@@ -99,10 +100,10 @@ export default function SystemBootHero() {
 
           {/* Sub-roles */}
           <AnimatedChild index={3}>
-            <div className="mb-8">
+            <div className="mx-auto mb-8 max-w-2xl">
               <div className="flex flex-wrap justify-center gap-2 text-xs font-mono text-[#7D8590]">
                 {PORTFOLIO_CONFIG.subRoles.map((role) => (
-                  <span key={role} className="px-2 py-0.5 rounded bg-[#0C121D] border border-[#1B3A4B]">
+                  <span key={role} className="rounded-full bg-white/[0.04] px-2.5 py-1 text-white/55 backdrop-blur-sm transition-colors hover:bg-white/[0.08] hover:text-white/80">
                     {role}
                   </span>
                 ))}
@@ -112,21 +113,21 @@ export default function SystemBootHero() {
 
           {/* Tagline */}
           <AnimatedChild index={5}>
-            <p className="max-w-2xl text-base sm:text-lg text-[#B8C2CC] leading-relaxed mb-10">
+            <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-[#B8C2CC] sm:text-lg">
               {PORTFOLIO_CONFIG.tagline}
             </p>
           </AnimatedChild>
 
           {/* Bio */}
           <AnimatedChild index={6}>
-            <p className="max-w-xl text-sm text-[#7D8590] leading-relaxed mb-12">
+            <p className="mx-auto mb-12 max-w-xl text-sm leading-relaxed text-[#7D8590]">
               {PORTFOLIO_CONFIG.bio}
             </p>
           </AnimatedChild>
 
           {/* CTAs */}
           <AnimatedChild index={7}>
-            <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
+            <div className="mx-auto flex w-full max-w-sm flex-col justify-center gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href={`https://github.com/${PORTFOLIO_CONFIG.github}`}
                 target="_blank"
