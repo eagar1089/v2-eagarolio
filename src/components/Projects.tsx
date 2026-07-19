@@ -64,10 +64,10 @@ const PROJECTS: Project[] = [
   {
     slug: 'f5-liveops',
     name: 'F5 LiveOps Dashboard',
-    purpose: 'A modern operations platform for searching and understanding F5 BIG-IP infrastructure.',
+    purpose: 'A web dashboard for displaying and searching read-only F5 REST API data.',
     status: 'completed',
     category: 'Operations Platform',
-    description: 'An operations dashboard that provides modern search and navigation through F5 BIG-IP infrastructure data. The system queries F5 REST APIs, caches latest state, and provides a responsive interface for searching VIPs, pools, nodes, and their relationships. Nothing is installed on F5 devices.',
+    description: 'A responsive dashboard that consumes read-only F5 REST API responses and presents VIP, pool, node, status, and relationship data through searchable views.',
     features: [
       'Search by VIP IP, port, pool member, node, VIP name, or pool name',
       'Complete relationship flow: Device → VIP → Pool → Members → Node',
@@ -91,7 +91,7 @@ const PROJECTS: Project[] = [
       { label: 'Backend API', type: 'api' },
       { label: 'Operations Dashboard', type: 'ui' },
     ],
-    impact: 'Provides modern, searchable access to F5 infrastructure data that was previously only available through the F5 management interface.',
+    impact: 'Makes read-only F5 API data easier to understand and search from a dashboard.',
   },
   {
     slug: 'server-inventory',

@@ -53,7 +53,7 @@ export const missionLog: MissionEntry[] = [
     projectHighlights: [
       {
         name: "F5 LiveOps Dashboard",
-        description: "Operations dashboard built to improve visibility and understanding of the F5 BIG-IP environment.",
+        description: "Web dashboard that consumes read-only F5 REST API data and presents it through clear, searchable views.",
         status: "completed",
         projectSlug: "f5-liveops",
       },
@@ -83,7 +83,7 @@ export const missionLog: MissionEntry[] = [
       "Built and maintained application projects across React, Next.js, Flask, IoT, and deployment workflows",
       "Used GitHub projects to apply academic concepts to working software",
     ],
-    tools: ["React", "Next.js", "Flask", "Python", "IoT", "Docker", "CI/CD"],
+    tools: ["PHP", "Laravel", "JavaScript", "React", "Next.js", "Python", "Flask", "FastAPI"],
     lessons: ["Strengthened application-development skills while continuing to grow as an infrastructure professional"],
     projectHighlights: [
       {
@@ -133,7 +133,7 @@ export const missionLog: MissionEntry[] = [
       "Support application deployment, permissions, services, and logs",
       "Collaborate with development teams to resolve production issues",
     ],
-    tools: ["Linux", "Nginx", "Bash", "PHP", "JavaScript", "React", "MySQL"],
+    tools: ["Linux", "Nginx", "Bash", "PHP", "Laravel", "JavaScript", "React", "Next.js", "Python", "Flask", "FastAPI", "MySQL"],
     lessons: [
       "Developed an understanding of both how applications are built and how they run in production",
       "Continued learning across infrastructure, deployment, and application development",
@@ -200,6 +200,10 @@ export const capabilities: CapabilityCluster[] = [
     description: "APIs, collectors, background jobs, and integrations.",
     technologies: [
       { id: "php",      name: "PHP",        usedIn: ["server-inventory-platform", "distributed-cron-monitoring"] },
+      { id: "laravel",  name: "Laravel",    usedIn: [] },
+      { id: "python",   name: "Python",     usedIn: ["infrastructure-data-collector"] },
+      { id: "flask",    name: "Flask",      usedIn: [] },
+      { id: "fastapi",  name: "FastAPI",    usedIn: [] },
       { id: "nodejs",   name: "Node.js",    usedIn: ["f5-liveops", "distributed-cron-monitoring"] },
       { id: "express",  name: "Express",    usedIn: ["f5-liveops", "server-inventory-platform"] },
       { id: "go",       name: "Go",         usedIn: ["infrastructure-data-collector"] },
@@ -212,6 +216,7 @@ export const capabilities: CapabilityCluster[] = [
     description:
       "Responsive operational dashboards and data visualisation.",
     technologies: [
+      { id: "javascript", name: "JavaScript",   usedIn: ["f5-liveops", "server-inventory-platform", "distributed-cron-monitoring"] },
       { id: "react",      name: "React",        usedIn: ["f5-liveops", "server-inventory-platform", "distributed-cron-monitoring"] },
       { id: "nextjs",     name: "Next.js",      usedIn: [] },
       { id: "typescript", name: "TypeScript",   usedIn: ["f5-liveops", "server-inventory-platform", "distributed-cron-monitoring"] },
