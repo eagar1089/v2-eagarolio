@@ -176,6 +176,35 @@ body::before {
   50% { opacity: 0.8; }
 }
 
+/* Persistent illumination for the fixed navigation rails. */
+.rail-line {
+  --rail-rgb: 34, 211, 238;
+  position: relative;
+  width: 2px;
+  flex: none;
+  overflow: hidden;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, rgba(var(--rail-rgb), 0.92) 18%, rgba(var(--rail-rgb), 0.92) 82%, transparent);
+  box-shadow: 0 0 7px rgba(var(--rail-rgb), 0.72), 0 0 18px rgba(var(--rail-rgb), 0.38);
+}
+
+.rail-line-cyan { --rail-rgb: 34, 211, 238; }
+.rail-line-violet { --rail-rgb: 168, 85, 247; }
+
+.rail-line-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, transparent 5%, #fff 48%, transparent 95%);
+  opacity: 0.45;
+  animation: railGlow 2.6s ease-in-out infinite;
+}
+
+@keyframes railGlow {
+  0%, 100% { opacity: 0.22; transform: translateY(-35%); }
+  50% { opacity: 0.7; transform: translateY(35%); }
+}
+
 /* Terminal styles */
 .terminal-cursor {
   display: inline-block;
