@@ -75,7 +75,7 @@ export function ResumeConsole() {
   return (
     <section
       id="resume"
-      className="relative mx-auto w-full max-w-6xl"
+      className="relative mx-auto w-full max-w-5xl"
       aria-label="Resume console"
     >
       <SectionHeader
@@ -84,7 +84,7 @@ export function ResumeConsole() {
         description="Preview, download, or read a summary of focus areas, projects, and skill clusters."
       />
 
-      <div className="mt-10 grid gap-6 lg:mt-12 lg:grid-cols-[1.4fr_1fr] lg:gap-8">
+      <div className="mt-9 grid gap-5 lg:mt-10 lg:grid-cols-[1.28fr_0.92fr] lg:gap-6">
         <div className="panel relative overflow-hidden border border-white/10 p-0 shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
           {available ? (
             <>
@@ -113,7 +113,7 @@ export function ResumeConsole() {
                   </a>
                 </div>
               </div>
-              <div className="h-[480px] bg-white/5 sm:h-[560px] lg:h-[600px]">
+              <div className="h-[440px] bg-white/5 sm:h-[500px] lg:h-[520px]">
                 <iframe
                   src={portfolio.resume.path}
                   title="Resume preview"
@@ -139,8 +139,8 @@ export function ResumeConsole() {
           )}
         </div>
 
-        <div className="space-y-4">
-          <div className="panel p-5 sm:p-6">
+        <div className="space-y-3.5">
+          <div className="panel p-4 sm:p-5">
             <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#22d3ee]">
               Profile summary
             </p>
@@ -148,7 +148,7 @@ export function ResumeConsole() {
             <p className="mt-1 font-mono text-xs text-[#B8C2CC]">{portfolio.titles.primary}</p>
             <p className="mt-3 text-sm leading-relaxed text-[#B8C2CC]">{portfolio.bio}</p>
 
-            <div className="mt-5 border-t border-white/10 pt-4">
+            <div className="mt-4 border-t border-white/10 pt-3.5">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#7D8590]">Focus</p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {portfolio.focus.map((f) => (
@@ -163,11 +163,11 @@ export function ResumeConsole() {
             </div>
           </div>
 
-          <div className="panel p-5 sm:p-6">
+          <div className="panel p-4 sm:p-5">
             <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#a855f7]">
               Quick channels
             </p>
-            <div className="mt-4 space-y-2">
+            <div className="mt-3 space-y-1.5">
               <ChannelRow Icon={GitHubIcon} label="GitHub" value={`@${portfolio.social.github.username}`} href={portfolio.social.github.url} />
               {portfolio.social.linkedin.url && (
                 <ChannelRow Icon={LinkedInIcon} label="LinkedIn" value={portfolio.social.linkedin.username || "Profile"} href={portfolio.social.linkedin.url} />
@@ -188,7 +188,7 @@ function ChannelRow({ Icon, label, value, href }: { Icon: React.ComponentType<{ 
       target={href.startsWith("http") ? "_blank" : undefined}
       rel="noopener noreferrer"
       data-cursor="Open"
-      className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.02] px-4 py-3 text-sm transition-all hover:border-[#22d3ee]/40 hover:bg-white/[0.04]"
+      className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2.5 text-sm transition-all hover:border-[#22d3ee]/40 hover:bg-white/[0.04]"
     >
       <span className="flex items-center gap-3">
         <Icon className="h-4 w-4 text-[#B8C2CC]" />
