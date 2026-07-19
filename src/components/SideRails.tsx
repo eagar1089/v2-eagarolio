@@ -19,7 +19,7 @@ const FileTextIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
 );
 
-const PAGE_SECTIONS = ['hero', 'tech-stack', 'github', 'mission-log', 'resume', 'contact'];
+const PAGE_SECTIONS = ['hero', 'tech-stack', 'projects', 'github', 'mission-log', 'resume', 'contact'];
 
 export default function SideRails() {
   const [scrollProgress, setScrollProgress] = useState(0);

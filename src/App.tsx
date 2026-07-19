@@ -4,6 +4,7 @@ import BackgroundSystem from './components/Background';
 import PortfolioPreloader from './components/Preloader';
 import SystemBootHero from './components/Hero';
 import TechStackMap from './components/InfrastructureMap';
+import ProjectMissionControl from './components/Projects';
 import GitHubIntelligence from './components/GitHubSection';
 import { MissionLog } from './components/experience/MissionLog';
 import { ResumeConsole } from './components/resume/ResumeConsole';
@@ -93,16 +94,19 @@ export default function App() {
         {/* 2. Technology Stack */}
         <TechStackMap />
 
-        {/* 3. GitHub Intelligence */}
+        {/* 3. Project Mission Control */}
+        <ProjectMissionControl />
+
+        {/* 4. GitHub Intelligence */}
         <GitHubIntelligence />
 
-        {/* 4. Career Mission Log with project case studies */}
+        {/* 5. Career Mission Log */}
         <MissionLog />
 
-        {/* 5. Resume Console */}
+        {/* 6. Resume Console */}
         <ResumeConsole />
 
-        {/* 6. Communication Uplink */}
+        {/* 7. Communication Uplink */}
         <CommunicationUplink />
 
         {/* Footer */}

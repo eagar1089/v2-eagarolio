@@ -119,7 +119,7 @@ export function CommunicationUplink() {
     <section id="contact" className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12 text-center">
-          <span className="text-xs font-mono text-[#4D194D] uppercase tracking-widest">06 - Communication Uplink</span>
+          <span className="text-xs font-mono text-[#4D194D] uppercase tracking-widest">07 - Communication Uplink</span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
             Communication Uplink
           </h2>
