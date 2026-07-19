@@ -128,7 +128,7 @@ export default function TechStackMap() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.85fr)_minmax(280px,1fr)] lg:gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.95fr)] lg:gap-10 xl:gap-12">
           {/* System Map */}
           <div className="min-w-0">
             <div className="neon-surface neon-cyan relative aspect-[4/3] max-h-[540px] min-h-[360px] overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_50%,rgba(0,100,102,0.08),transparent_58%)] p-3 sm:p-4">

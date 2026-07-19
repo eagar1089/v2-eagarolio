@@ -465,6 +465,13 @@ body::before {
   }
 }
 
+/* Keep desktop content clear of both fixed navigation rails. */
+@media (min-width: 1280px) {
+  .portfolio-main > section:not(#hero) {
+    width: min(calc(100% - 14rem), 1280px);
+  }
+}
+
 /* Section transitions */
 .section-reveal {
   opacity: 0;

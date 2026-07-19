@@ -84,7 +84,7 @@ export function ResumeConsole() {
         description="Preview, download, or read a summary of focus areas, projects, and skill clusters."
       />
 
-      <div className="mt-9 grid gap-5 lg:mt-10 lg:grid-cols-[1.28fr_0.92fr] lg:gap-6">
+      <div className="mt-9 grid gap-6 lg:mt-10 lg:grid-cols-[minmax(0,1.22fr)_minmax(300px,0.88fr)] lg:gap-10 xl:gap-12">
         <div className="panel neon-surface neon-cyan relative overflow-hidden p-0">
           {available ? (
             <>
