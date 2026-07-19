@@ -16,11 +16,13 @@ import CustomCursor from './components/CustomCursor';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const [heroReady, setHeroReady] = useState(false);
 
   useEffect(() => {
     // Check if this is a direct load
     const hasVisited = sessionStorage.getItem('sgr_preloaded');
     if (hasVisited) {
+      setHeroReady(true);
       setLoading(false);
     }
   }, []);
@@ -51,6 +53,7 @@ export default function App() {
   }, []);
 
   const handlePreloadComplete = useCallback(() => {
+    setHeroReady(true);
     setLoading(false);
     sessionStorage.setItem('sgr_preloaded', 'true');
   }, []);
@@ -86,7 +89,7 @@ export default function App() {
       {/* Main content */}
       <main id="main-content" className="portfolio-main relative z-10">
         {/* 1. System Boot Hero */}
-        <SystemBootHero />
+        <SystemBootHero ready={heroReady} />
 
         {/* 2. Technology Stack */}
         <TechStackMap />
