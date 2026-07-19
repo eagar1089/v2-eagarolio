@@ -186,6 +186,7 @@ export default function GitHubIntelligence() {
     <section id="github" className="px-4 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20 xl:px-16">
       <div style={theme} className="mx-auto w-full max-w-5xl overflow-hidden bg-[var(--gh-bg)] text-[var(--gh-text)] transition-colors duration-300">
         <header className="border-b border-[var(--gh-border)] px-5 py-6 sm:px-7">
+          <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--gh-accent)]">04 - GitHub Intelligence</div>
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex min-w-0 items-center gap-4">
               {user?.avatar_url ? (

@@ -57,7 +57,7 @@ export function MissionLog() {
       aria-label="Career mission log"
     >
       <SectionHeader
-        kicker="06 · Mission Log"
+        kicker="05 - Mission Log"
         title="The journey, mapped out."
         description="Key phases of focus, systems worked on, tools used, and lessons learned along the way."
       />

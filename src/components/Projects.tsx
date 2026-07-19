@@ -301,7 +301,7 @@ export default function ProjectMissionControl() {
     <section id="projects" className="px-4 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20 xl:px-16">
       <div className="mx-auto w-full max-w-5xl">
         <div className="mb-8 text-center sm:mb-10">
-          <span className="text-xs font-mono text-[#4D194D] uppercase tracking-widest">04 - Mission Control</span>
+          <span className="text-xs font-mono text-[#4D194D] uppercase tracking-widest">03 - Mission Control</span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
             Project Mission Control
           </h2>

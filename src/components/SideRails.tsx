@@ -19,17 +19,35 @@ const FileTextIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
 );
 
+const PAGE_SECTIONS = ['hero', 'tech-stack', 'projects', 'github', 'mission-log', 'resume', 'contact'];
+
 export default function SideRails() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState(1);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+
+      const viewportMarker = window.innerHeight * 0.5;
+      let current = 0;
+      PAGE_SECTIONS.forEach((id, index) => {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= viewportMarker) {
+          current = index;
+        }
+      });
+      setActiveSection(current + 1);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   const scrollToTop = useCallback(() => {
@@ -116,9 +134,9 @@ export default function SideRails() {
         </div>
 
         <div className="font-mono text-xs text-[#7D8590]">
-          <span className="text-[#00D4AA]">0</span>
+          <span className="text-[#00D4AA]">{String(activeSection).padStart(2, '0')}</span>
           <span className="text-[#3E1F47] mx-1">/</span>
-          <span>12</span>
+          <span>{String(PAGE_SECTIONS.length).padStart(2, '0')}</span>
         </div>
 
         <div className="w-[2px] h-32 bg-[#111827] rounded-full overflow-hidden">

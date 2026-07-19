@@ -97,16 +97,16 @@ export default function App() {
         {/* 4. GitHub Intelligence */}
         <GitHubIntelligence />
 
-        {/* 7. Career Mission Log */}
+        {/* 5. Career Mission Log */}
         <MissionLog />
 
         {/* 6. Resume Console */}
         <ResumeConsole />
 
-        {/* 10. Communication Uplink */}
+        {/* 7. Communication Uplink */}
         <CommunicationUplink />
 
-        {/* 11. Footer */}
+        {/* Footer */}
         <Footer />
       </main>
     </div>
