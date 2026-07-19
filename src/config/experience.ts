@@ -13,6 +13,12 @@ export interface MissionEntry {
   tools: string[];
   lessons: string[];
   relatedProjects?: string[]; // project slugs
+  projectHighlights?: {
+    name: string;
+    description: string;
+    status: "current" | "completed" | "degree";
+    url?: string;
+  }[];
 }
 
 export const missionLog: MissionEntry[] = [
@@ -21,7 +27,7 @@ export const missionLog: MissionEntry[] = [
     period: "2021",
     version: "v1.0",
     title: "Diploma Completed",
-    focus: "Completed my diploma and prepared to begin a professional career in Linux system administration.",
+    focus: "Completed my diploma in 2021, building a practical technical foundation before beginning my professional career in Linux administration.",
     systems: ["Diploma", "Technical foundations"],
     responsibilities: ["Completed diploma studies in 2021"],
     tools: [],
@@ -32,7 +38,7 @@ export const missionLog: MissionEntry[] = [
     period: "November 2021 - February 2022",
     version: "v2.0",
     title: "Joined Justdial - Linux Administrator",
-    focus: "Started my professional career at Justdial as a Linux Administrator.",
+    focus: "Started my professional career at Justdial as a Linux Administrator, learning how production systems are operated, supported, and troubleshot in a real working environment.",
     systems: ["Linux administration", "Production troubleshooting", "System operations"],
     responsibilities: [
       "Joined Justdial in November 2021",
@@ -43,22 +49,58 @@ export const missionLog: MissionEntry[] = [
     lessons: ["Gained initial hands-on experience supporting production systems"],
   },
   {
-    id: "education-break",
-    period: "February 2022 - June 2022",
+    id: "be-degree",
+    period: "February 2022 - Present",
     version: "v3.0",
-    title: "Higher Education",
-    focus: "Stepped away from full-time work to continue pursuing a degree and strengthen my academic foundation.",
-    systems: ["Degree studies", "Continued learning"],
-    responsibilities: ["Focused on higher education before returning to professional work"],
-    tools: [],
-    lessons: ["Committed to balancing long-term education with professional growth"],
+    title: "BE Degree and Applied Development",
+    focus: "Continued higher education through a BE degree while turning coursework and independent learning into practical web, IoT, automation, and DevOps projects.",
+    systems: ["BE degree", "Full-stack development", "IoT", "DevOps and CI/CD"],
+    responsibilities: [
+      "Continued degree studies alongside professional responsibilities after rejoining Justdial",
+      "Built and maintained application projects across React, Next.js, Flask, IoT, and deployment workflows",
+      "Used GitHub projects to apply academic concepts to working software",
+    ],
+    tools: ["React", "Next.js", "Flask", "Python", "IoT", "Docker", "CI/CD"],
+    lessons: ["Strengthened application-development skills while continuing to grow as an infrastructure professional"],
+    projectHighlights: [
+      {
+        name: "Digital Memory Jar",
+        description: "AI-powered digital memory logging application and the base project for later delivery improvements.",
+        status: "degree",
+        url: "https://github.com/eagar1089/Digital-MemoryJar",
+      },
+      {
+        name: "IoT Production Tracker",
+        description: "Web application for interacting with microcontrollers and supporting production administration workflows.",
+        status: "degree",
+        url: "https://github.com/eagar1089/IoT-Production-Tracker",
+      },
+      {
+        name: "2-Tier Flask DevOps Project",
+        description: "Two-tier Flask application used to practise automated CI/CD, containers, and cloud deployment.",
+        status: "degree",
+        url: "https://github.com/eagar1089/2tier_Flask_App-DevOps_Project",
+      },
+      {
+        name: "CI/CD Hardening - DMJ",
+        description: "Delivery-pipeline hardening work for the Digital Memory Jar project.",
+        status: "degree",
+        url: "https://github.com/eagar1089/cicd_hardening-DMj",
+      },
+      {
+        name: "Learn Mate - Next.js",
+        description: "Next.js application created to extend modern frontend and full-stack development skills.",
+        status: "degree",
+        url: "https://github.com/eagar1089/learn_mate-nextjs",
+      },
+    ],
   },
   {
     id: "justdial-current",
     period: "June 2022 - Present",
     version: "v4.0",
     title: "Rejoined Justdial - Linux Administrator",
-    focus: "Rejoined Justdial while pursuing a degree and continue working as a Linux Administrator, with additional hands-on web development experience.",
+    focus: "Rejoined Justdial in June 2022 while pursuing a degree. I continue as a Linux Administrator and contribute to internal monitoring, inventory, data-collection, and web application work.",
     systems: ["Linux administration", "Application deployment", "Web development", "Production support"],
     responsibilities: [
       "Rejoined Justdial in June 2022 while pursuing a degree",
@@ -71,6 +113,28 @@ export const missionLog: MissionEntry[] = [
     lessons: [
       "Developed an understanding of both how applications are built and how they run in production",
       "Continued learning across infrastructure, deployment, and application development",
+    ],
+    projectHighlights: [
+      {
+        name: "Distributed Cron Monitoring Platform",
+        description: "Current Justdial project providing centralised cron visibility, auditing, and change tracking across Linux infrastructure.",
+        status: "current",
+      },
+      {
+        name: "F5 LiveOps Dashboard",
+        description: "Operations dashboard built to improve visibility and understanding of the F5 BIG-IP environment.",
+        status: "completed",
+      },
+      {
+        name: "Modern Server Inventory Platform",
+        description: "Modernisation work for server inventory, operational data access, and responsive administration workflows.",
+        status: "completed",
+      },
+      {
+        name: "Infrastructure Data Collector",
+        description: "Lightweight collection workflow for sending consistent Linux infrastructure data to central systems.",
+        status: "completed",
+      },
     ],
   },
 ];

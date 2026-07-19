@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { BookOpen, Briefcase, GraduationCap, Wrench } from "lucide-react";
+import { BookOpen, Briefcase, ExternalLink, GraduationCap, Wrench } from "lucide-react";
 import { missionLog } from "@/config";
 
 export function SectionHeader({ kicker, title, description }: {
@@ -75,7 +75,7 @@ export function MissionLog() {
 function MissionEntry({ entry, index }: { entry: typeof missionLog[number]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10% 0px" });
-  const isEducation = entry.id === "diploma" || entry.id === "education-break";
+  const isEducation = entry.id === "diploma" || entry.id === "be-degree";
 
   return (
     <motion.article
@@ -133,6 +133,66 @@ function MissionEntry({ entry, index }: { entry: typeof missionLog[number]; inde
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+
+          {entry.projectHighlights && entry.projectHighlights.length > 0 && (
+            <div className="mt-4 border-t border-white/10 pt-3.5">
+              <div className="flex items-center justify-between gap-3">
+                <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#22d3ee]">Project highlights</div>
+                <span className="font-mono text-[9px] text-[#7D8590]">{entry.projectHighlights.length} projects</span>
+              </div>
+              <div className="mt-2.5 grid gap-2">
+                {entry.projectHighlights.map((project, projectIndex) => {
+                  const current = project.status === "current";
+                  const degree = project.status === "degree";
+                  const content = (
+                    <>
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h4 className="text-[13px] font-semibold text-white/90">{project.name}</h4>
+                            <span className={`rounded-full px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em] ${
+                              current
+                                ? "bg-[#22d3ee]/15 text-[#22d3ee]"
+                                : degree
+                                  ? "bg-[#a855f7]/15 text-[#c084fc]"
+                                  : "bg-emerald-400/10 text-emerald-300"
+                            }`}>
+                              {current ? "Current" : degree ? "BE project" : "Completed"}
+                            </span>
+                          </div>
+                          <p className="mt-1 text-[11px] leading-relaxed text-[#7D8590]">{project.description}</p>
+                        </div>
+                        {project.url && <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#22d3ee]/70" />}
+                      </div>
+                    </>
+                  );
+
+                  return (
+                    <motion.div
+                      key={project.name}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={inView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.45, delay: 0.24 + projectIndex * 0.07 }}
+                      whileHover={{ y: -2 }}
+                      className={`rounded-lg border p-3 transition-colors ${
+                        current
+                          ? "border-[#22d3ee]/35 bg-gradient-to-r from-[#22d3ee]/10 to-transparent shadow-[0_0_24px_rgba(34,211,238,0.07)]"
+                          : degree
+                            ? "border-[#a855f7]/20 bg-[#a855f7]/[0.045] hover:border-[#a855f7]/40"
+                            : "border-white/10 bg-white/[0.025] hover:border-emerald-400/30"
+                      }`}
+                    >
+                      {project.url ? (
+                        <a href={project.url} target="_blank" rel="noopener noreferrer" className="block" aria-label={`Open ${project.name} on GitHub`}>
+                          {content}
+                        </a>
+                      ) : content}
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
           )}
 

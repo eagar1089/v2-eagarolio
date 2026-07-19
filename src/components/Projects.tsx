@@ -65,7 +65,7 @@ const PROJECTS: Project[] = [
     slug: 'f5-liveops',
     name: 'F5 LiveOps Dashboard',
     purpose: 'A modern operations platform for searching and understanding F5 BIG-IP infrastructure.',
-    status: 'active',
+    status: 'completed',
     category: 'Operations Platform',
     description: 'An operations dashboard that provides modern search and navigation through F5 BIG-IP infrastructure data. The system queries F5 REST APIs, caches latest state, and provides a responsive interface for searching VIPs, pools, nodes, and their relationships. Nothing is installed on F5 devices.',
     features: [
@@ -97,7 +97,7 @@ const PROJECTS: Project[] = [
     slug: 'server-inventory',
     name: 'Modern Server Inventory Platform',
     purpose: 'Modernise a legacy PHP and MySQL infrastructure inventory platform.',
-    status: 'in-progress',
+    status: 'completed',
     category: 'Infrastructure Management',
     description: 'Migration of a legacy PHP, MySQL, AdminLTE and DataTables server inventory application to a modern React and Express architecture. The platform manages server inventory data collection, Linux and hardware information, server ownership mapping, and provides CSV/Excel export with a responsive dashboard redesign.',
     features: [
@@ -132,7 +132,7 @@ const PROJECTS: Project[] = [
     slug: 'infra-collector',
     name: 'Infrastructure Data Collector',
     purpose: 'Collect system and infrastructure information using lightweight server-side agents.',
-    status: 'active',
+    status: 'completed',
     category: 'Infrastructure Tooling',
     description: 'A lightweight data collection system using Bash or Go-based compiled agents deployed on Linux servers. The collector gathers system and infrastructure information with minimal runtime dependencies, versioning, hash verification, central configuration, and automated scheduled execution.',
     features: [
