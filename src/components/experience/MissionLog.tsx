@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { BookOpen, Briefcase, ExternalLink, GraduationCap, Network, Wrench, X } from "lucide-react";
-import { missionLog, projects, type Project } from "@/config";
+import { missionLog } from "@/config/experience";
+import { projects, type Project } from "@/config/projects";
 
 type ProjectHighlight = NonNullable<typeof missionLog[number]["projectHighlights"]>[number];
 
@@ -68,7 +69,7 @@ export function MissionLog() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        4+ years professional experience
+        2+ years professional experience
       </motion.div>
 
       <div className="relative mt-10 sm:mt-12 lg:mt-14">
