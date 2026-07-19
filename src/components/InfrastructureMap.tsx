@@ -48,7 +48,7 @@ const INFRA_NODES: InfraNode[] = [
     id: 'databases',
     name: 'Databases',
     icon: Database,
-    tools: ['MySQL', 'Query optimisation', 'Schema design', 'Caching strategies', 'Data modelling'],
+    tools: ['MySQL', 'MongoDB', 'Query optimisation', 'Schema design', 'Caching strategies', 'Data modelling'],
     responsibilities: ['Database schema design', 'Query optimisation', 'Historical data storage', 'Inventory systems'],
     projects: ['Cron Monitoring', 'Server Inventory', 'F5 LiveOps'],
     learning: ['Advanced indexing', 'Read replicas', 'Sharding strategies'],

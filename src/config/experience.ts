@@ -133,7 +133,7 @@ export const missionLog: MissionEntry[] = [
       "Support application deployment, permissions, services, and logs",
       "Collaborate with development teams to resolve production issues",
     ],
-    tools: ["Linux", "Nginx", "Bash", "PHP", "Laravel", "JavaScript", "React", "Next.js", "Python", "Flask", "FastAPI", "MySQL"],
+    tools: ["Linux", "Nginx", "Bash", "PHP", "Laravel", "JavaScript", "React", "Next.js", "Python", "Flask", "FastAPI", "MySQL", "MongoDB"],
     lessons: [
       "Developed an understanding of both how applications are built and how they run in production",
       "Continued learning across infrastructure, deployment, and application development",
@@ -231,6 +231,7 @@ export const capabilities: CapabilityCluster[] = [
     description: "Schema design, query optimisation, historical data, and caching.",
     technologies: [
       { id: "mysql",   name: "MySQL",               usedIn: ["distributed-cron-monitoring", "f5-liveops", "server-inventory-platform"] },
+      { id: "mongodb", name: "MongoDB",             usedIn: [] },
       { id: "schema",  name: "Schema design",       usedIn: ["distributed-cron-monitoring", "f5-liveops", "server-inventory-platform"] },
       { id: "query",   name: "Query optimisation",  usedIn: ["distributed-cron-monitoring", "server-inventory-platform"] },
       { id: "history", name: "Historical storage",  usedIn: ["distributed-cron-monitoring", "f5-liveops"] },
