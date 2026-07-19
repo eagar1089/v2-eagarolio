@@ -50,7 +50,12 @@ export function MissionLog() {
   const [selectedProject, setSelectedProject] = useState<ProjectHighlight | null>(null);
 
   return (
-    <section id="mission-log" className="relative mx-auto w-full max-w-5xl" aria-label="Career timeline">
+    <section
+      id="mission-log"
+      className="relative mx-auto w-full"
+      style={{ maxWidth: "1040px" }}
+      aria-label="Career timeline"
+    >
       <SectionHeader
         kicker="04 - Mission Log"
         title="The journey, mapped out."
@@ -66,7 +71,7 @@ export function MissionLog() {
         4+ years professional experience
       </motion.div>
 
-      <div className="relative mt-10 sm:mt-12">
+      <div className="relative mt-10 sm:mt-12 lg:mt-14">
         <motion.div
           className="absolute bottom-6 left-4 top-6 w-px bg-gradient-to-b from-transparent via-[#22d3ee]/45 to-transparent md:left-1/2 md:-translate-x-1/2"
           initial={{ scaleY: 0, opacity: 0 }}
@@ -76,7 +81,7 @@ export function MissionLog() {
           style={{ transformOrigin: "top" }}
           aria-hidden="true"
         />
-        <div className="space-y-6 md:space-y-7">
+        <div className="space-y-7 md:space-y-9">
           {missionLog.map((entry, index) => (
             <MissionEntry key={entry.id} entry={entry} index={index} onSelectProject={setSelectedProject} />
           ))}
@@ -119,7 +124,7 @@ function MissionEntry({
         </motion.div>
       </div>
 
-      <div className={`col-start-2 row-start-1 min-w-0 ${index % 2 === 0 ? "md:col-start-1 md:pr-5" : "md:col-start-3 md:pl-5"}`}>
+      <div className={`col-start-2 row-start-1 min-w-0 ${index % 2 === 0 ? "md:col-start-1 md:pr-8 lg:pr-10" : "md:col-start-3 md:pl-8 lg:pl-10"}`}>
         <div className="panel h-full p-4 hover:-translate-y-1 sm:p-[1.125rem]">
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full border border-[#22d3ee]/40 bg-[#22d3ee]/10 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-[#22d3ee]">
