@@ -1,0 +1,95 @@
+\documentclass[9pt,a4paper]{article}
+\usepackage[margin=0.48in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{microtype}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\definecolor{accent}{HTML}{0B5F73}
+\definecolor{dark}{HTML}{102A36}
+\definecolor{muted}{HTML}{50616B}
+\titleformat{\section}{\color{accent}\bfseries\small\scshape}{}{0pt}{}[\color{accent!35}\titlerule]
+\titlespacing*{\section}{0pt}{5pt}{2pt}
+\setlist[itemize]{leftmargin=12pt,itemsep=0.5pt,topsep=1.5pt,parsep=0pt}
+\newcommand{\skill}[2]{\textbf{\color{dark}#1:} #2}
+\newcommand{\entryhead}[2]{\textbf{\color{dark}#1}\hfill\textbf{\footnotesize\color{muted}#2}}
+\newcommand{\project}[3]{\textbf{\color{dark}#1}\\[-1pt]{\footnotesize\bfseries\color{accent}#2}\begin{itemize}#3\end{itemize}}
+
+\begin{document}
+\fontsize{8.7}{10.4}\selectfont
+{\fontsize{22}{23}\selectfont\bfseries\color{dark} Sagar Parab}\\[2pt]
+{\bfseries\color{accent} LINUX ADMINISTRATOR $|$ WEB DEVELOPMENT EXPERIENCE}\\[3pt]
+{\footnotesize Bengaluru, India $|$ \href{mailto:sgrp9801@gmail.com}{sgrp9801@gmail.com} $|$ \href{tel:+918956002275}{+91 8956002275} $|$
+\href{https://github.com/eagar1089}{github.com/eagar1089} $|$ \href{https://www.linkedin.com/in/sagarparab0189}{LinkedIn} $|$ \href{https://v1eagarolio.vercel.app}{Portfolio}}
+
+\section{Professional Summary}
+Linux Administrator with more than two years of experience supporting production and staging environments. Hands-on with RHEL, Ubuntu, CentOS, Nginx, PHP-FPM, MySQL, Bash, monitoring, backups, logs, permissions, and operational troubleshooting. Web development proficiency includes PHP, Laravel, JavaScript, React, Next.js, Python, Flask, FastAPI, REST APIs, MySQL, MongoDB, and deployment of applications on Linux servers.
+
+\section{Technical Skills}
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+\skill{Linux Administration}{RHEL, Ubuntu, CentOS, users, permissions, services, logs} &
+\skill{Language Proficiency}{PHP, JavaScript, Python}\\
+\skill{Framework Proficiency}{Laravel, React, Next.js, Flask, FastAPI} &
+\skill{Monitoring}{Prometheus, Grafana, Node Exporter, service health}\\
+\skill{Automation}{Bash, Python, backups, logs, deployment scripting} &
+\skill{Databases and Tools}{MySQL, MongoDB, Git, Docker, Postman}\\
+\skill{Application Delivery}{Docker, GitHub Actions, Jenkins, GitLab pipelines} &
+\skill{Practices}{Incident support, observability, least privilege, documentation}
+\end{tabularx}
+
+\section{Professional Experience}
+\entryhead{Justdial Pvt. Ltd. - Linux Administrator}{Jul 2026 - Present $|$ Nov 2021 - Feb 2024}\\[-1pt]
+{\footnotesize\color{muted}Bengaluru, India $|$ Linux administration and web development responsibilities}
+\begin{itemize}
+  \item Administer Linux application environments across Ubuntu, CentOS, and RHEL, supporting Nginx, MySQL, Node.js, and PHP-FPM services in production and staging.
+  \item Automate backups, log rotation, recovery, and recurring operational workflows with Bash and Python to reduce manual administration.
+  \item Support Jenkins, GitLab, and GitHub Actions workflows used for repeatable application build, validation, and deployment processes.
+  \item Tune and troubleshoot Nginx, PHP-FPM, MySQL, permissions, logs, and application services during deployment and incident resolution.
+  \item Develop internal monitoring and web tools, including the current Distributed Cron Monitoring Platform and earlier F5 LiveOps, Server Inventory, and Infrastructure Data Collector projects; F5 LiveOps consumed read-only F5 REST API data for dashboard display.
+  \item Collaborate with development teams to diagnose production issues and connect application behavior with operating-system, network, and service-level evidence.
+\end{itemize}
+
+\section{Selected Systems and Web Projects}
+\noindent\begin{minipage}[t]{0.49\textwidth}\vspace{0pt}
+\project{2-Tier Flask Web Application}{Flask, MongoDB, Jenkins, Docker Compose, AWS EC2}{
+  \item Containerized a two-tier application with persistent storage and health checks, then automated image build and deployment through Jenkins.
+  \item Reduced a 20+ minute manual deployment process to under 4 minutes through pipeline automation.
+}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}\vspace{0pt}
+\project{Application Delivery Hardening}{GitHub Actions, Docker, Trivy}{
+  \item Designed a seven-stage workflow covering linting, tests, image build, vulnerability scanning, staging, smoke tests, and production promotion.
+  \item Added health-check rollback and blocked deployment when critical container vulnerabilities were detected.
+}
+\end{minipage}\\[-2pt]
+\begin{minipage}[t]{0.49\textwidth}\vspace{0pt}
+\project{Monitoring and Observability Stack}{Prometheus, Grafana, Node Exporter, Docker}{
+  \item Deployed a containerized monitoring stack and dashboards for CPU, memory, disk, network, and service-health visibility.
+}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}\vspace{0pt}
+\project{Digital Memory Jar}{Next.js, React, Node.js, Docker, GitHub Actions}{
+  \item Built a full-stack journaling application and automated its Docker build and delivery workflow with GitHub Actions.
+}
+\end{minipage}
+
+\section{Education and Certifications}
+\noindent\begin{minipage}[t]{0.49\textwidth}\vspace{0pt}
+\textbf{B.E. Computer Engineering} - University of Mumbai\\[-1pt]
+{\footnotesize\color{muted}Jul 2023 - May 2026 $|$ GPA: 7.5}\\[1pt]
+\textbf{Diploma in Computer Engineering} - University of Mumbai\\[-1pt]
+{\footnotesize\color{muted}2019 - 2021 $|$ 86.8\%}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\textwidth}\vspace{0pt}
+\textbf{Certifications}\\[-1pt]
+RHCSA; Docker and Kubernetes Hands-on\\[2pt]
+{\footnotesize\color{muted}Focus: SDLC automation, containers, monitoring, incident response, deployment security, and infrastructure automation.}
+\end{minipage}
+
+\end{document}

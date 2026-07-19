@@ -2,8 +2,9 @@ import { PORTFOLIO_CONFIG } from '@/config/portfolio';
 import type { GitHubRepo, GitHubUser } from '@/config/portfolio';
 
 const GITHUB_API = 'https://api.github.com';
-const CACHE_KEY_USER = 'sgr_github_user';
-const CACHE_KEY_REPOS = 'sgr_github_repos';
+const CACHE_KEY_USER = 'sgr_github_user_v2';
+const CACHE_KEY_REPOS = 'sgr_github_repos_v2';
+const CACHE_KEY_STARRED = 'sgr_github_starred_v2';
 const CACHE_TTL = 3600000; // 1 hour
 
 interface CacheEntry<T> {
@@ -71,21 +72,7 @@ export async function fetchGitHubRepos(): Promise<GitHubRepo[]> {
     );
     if (!res.ok) return [];
     const data = await res.json();
-    const repos: GitHubRepo[] = data.map((repo: Record<string, unknown>) => ({
-      name: repo.name,
-      description: repo.description || null,
-      html_url: repo.html_url,
-      stargazers_count: repo.stargazers_count || 0,
-      forks_count: repo.forks_count || 0,
-      language: (repo.language as string) || null,
-      topics: (repo.topics as string[]) || [],
-      updated_at: repo.updated_at,
-      pushed_at: repo.pushed_at,
-      archived: repo.archived || false,
-      fork: repo.fork || false,
-      homepage: repo.homepage || '',
-      default_branch: repo.default_branch || 'main',
-    }));
+    const repos: GitHubRepo[] = data.map(mapRepo);
     setCache(CACHE_KEY_REPOS, repos);
     return repos;
   } catch {
@@ -93,33 +80,75 @@ export async function fetchGitHubRepos(): Promise<GitHubRepo[]> {
   }
 }
 
-export function selectFeaturedRepos(repos: GitHubRepo[]): GitHubRepo[] {
-  const featured = PORTFOLIO_CONFIG.featuredRepos;
-  const result: GitHubRepo[] = [];
+function mapRepo(repo: Record<string, any>): GitHubRepo {
+  return {
+    name: String(repo.name || ''),
+    owner: String(repo.owner?.login || ''),
+    description: repo.description || null,
+    html_url: String(repo.html_url || ''),
+    stargazers_count: Number(repo.stargazers_count || 0),
+    forks_count: Number(repo.forks_count || 0),
+    language: repo.language || null,
+    topics: Array.isArray(repo.topics) ? repo.topics : [],
+    updated_at: String(repo.updated_at || ''),
+    pushed_at: String(repo.pushed_at || ''),
+    archived: Boolean(repo.archived),
+    fork: Boolean(repo.fork),
+    homepage: String(repo.homepage || ''),
+    default_branch: String(repo.default_branch || 'main'),
+  };
+}
 
-  // First: manually featured
-  for (const name of featured) {
-    const found = repos.find(r => r.name === name);
-    if (found) result.push(found);
+export async function fetchStarredRepos(): Promise<GitHubRepo[]> {
+  const cached = getCache<GitHubRepo[]>(CACHE_KEY_STARRED);
+  if (cached) return cached;
+
+  try {
+    const res = await fetch(
+      `${GITHUB_API}/users/${PORTFOLIO_CONFIG.github}/starred?per_page=100&sort=created&direction=desc`,
+      { headers: { Accept: 'application/vnd.github+json' } }
+    );
+    if (!res.ok) return [];
+    const repos = (await res.json()).map(mapRepo);
+    setCache(CACHE_KEY_STARRED, repos);
+    return repos;
+  } catch {
+    return [];
   }
+}
 
-  // Then: non-fork, non-archived, with description and recent activity
-  const rest = repos.filter(
-    r => !result.find(f => f.name === r.name) && !r.fork && !r.archived && r.description
+export type ShowcaseSource = 'top' | 'starred' | 'top-and-starred';
+
+export function selectShowcaseRepos(
+  ownedRepos: GitHubRepo[],
+  starredRepos: GitHubRepo[],
+  limit = 6
+): { repos: GitHubRepo[]; source: ShowcaseSource } {
+  const eligibleOwned = ownedRepos
+    .filter((repo) => !repo.fork && !repo.archived && repo.description)
+    .sort((a, b) => {
+      const engagement = (b.stargazers_count - a.stargazers_count) * 5
+        + (b.forks_count - a.forks_count) * 2;
+      if (engagement !== 0) return engagement;
+      return new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime();
+    });
+
+  const selected = eligibleOwned.slice(0, limit);
+  const selectedNames = new Set(selected.map((repo) => `${repo.owner}/${repo.name}`));
+  const eligibleStarred = starredRepos.filter(
+    (repo) => !repo.archived && repo.description && !selectedNames.has(`${repo.owner}/${repo.name}`)
   );
 
-  rest.sort((a, b) => {
-    const aScore = a.stargazers_count * 3 + (a.description ? 1 : 0);
-    const bScore = b.stargazers_count * 3 + (b.description ? 1 : 0);
-    return bScore - aScore;
-  });
-
-  for (const r of rest) {
-    if (result.length >= 8) break;
-    result.push(r);
+  for (const repo of eligibleStarred) {
+    if (selected.length >= limit) break;
+    selected.push(repo);
   }
 
-  return result;
+  const usedStarred = selected.some((repo) => repo.owner !== PORTFOLIO_CONFIG.github);
+  return {
+    repos: selected,
+    source: usedStarred && eligibleOwned.length ? 'top-and-starred' : usedStarred ? 'starred' : 'top',
+  };
 }
 
 export function getLanguageDistribution(repos: GitHubRepo[]): Record<string, number> {

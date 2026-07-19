@@ -61,6 +61,7 @@ export interface RCAMethod {
 
 export interface GitHubRepo {
   name: string;
+  owner: string;
   description: string | null;
   html_url: string;
   stargazers_count: number;
@@ -91,15 +92,15 @@ export const PORTFOLIO_CONFIG = {
   brand: 'S9r',
   role: 'Linux Administrator',
   subRoles: [
-    'Linux Administrator',
-    'Automation Specialist',
-    'Cloud Engineer',
-    'Full-Stack Developer',
+    'Linux Operations',
+    'Web Development',
+    'Production Support',
+    'Monitoring and Automation',
   ],
-  tagline: 'Building reliable systems behind modern digital experiences.',
-  bio: 'I design infrastructure tools, automation workflows, monitoring platforms, and operational dashboards that turn complex systems into clear, dependable experiences.',
+  tagline: 'Operating reliable Linux systems and building practical web applications.',
+  bio: 'Linux Administrator with more than two years of experience at Justdial and hands-on web development experience. I work across production operations, monitoring, troubleshooting, automation, application support, and internal web tools.',
   email: 'sgrp9801@gmail.com',
-  location: 'India',
+  location: 'Bengaluru, India',
   github: 'eagar1089',
   linkedin: 'https://www.linkedin.com/in/sagarparab0189',
   socialLinks: [
@@ -107,14 +108,32 @@ export const PORTFOLIO_CONFIG = {
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/sagarparab0189', icon: 'linkedin' },
     { name: 'Codepen', url: 'https://codepen.io/eagar1089', icon: 'codepen' },
   ] as SocialLink[],
-  resumePath: '/resume/Sagar_Parab_Resume.pdf',
-  featuredRepos: [
-    'cron-monitoring-platform',
-    'f5-liveops-dashboard',
-    'server-inventory-platform',
-    'rca-research',
-    'infra-collector',
-  ],
+  resumePath: '/resume/SagarParab-Resume.pdf',
   logoAnimationIntensity: 'medium',
   backgroundEffectIntensity: 'low',
+} as const;
+
+// Compatibility shape for the selected Option A sections.
+export const portfolio = {
+  name: PORTFOLIO_CONFIG.name,
+  email: PORTFOLIO_CONFIG.email,
+  bio: PORTFOLIO_CONFIG.bio,
+  titles: { primary: PORTFOLIO_CONFIG.role },
+  focus: PORTFOLIO_CONFIG.subRoles,
+  resume: {
+    path: PORTFOLIO_CONFIG.resumePath,
+    available: true,
+  },
+  social: {
+    github: {
+      username: PORTFOLIO_CONFIG.github,
+      url: `https://github.com/${PORTFOLIO_CONFIG.github}`,
+    },
+    linkedin: {
+      username: 'sagarparab0189',
+      url: PORTFOLIO_CONFIG.linkedin,
+    },
+  },
+  availability: { label: 'Available for selected opportunities' },
+  contact: { recipient: PORTFOLIO_CONFIG.email },
 } as const;

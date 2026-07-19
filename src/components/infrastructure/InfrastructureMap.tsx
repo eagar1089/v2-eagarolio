@@ -10,24 +10,24 @@ import { SectionHeader } from "../terminal/IdentityTerminal";
 
 const NODES = [
   { id: "linux",   label: "Linux Ops",       x: 22, y: 22, cluster: "infrastructure" },
-  { id: "auto",    label: "Automation",      x: 50, y: 18, cluster: "devops" },
+  { id: "auto",    label: "Automation",      x: 50, y: 18, cluster: "delivery" },
   { id: "mon",     label: "Monitoring",      x: 78, y: 26, cluster: "observability" },
   { id: "db",      label: "Databases",       x: 18, y: 55, cluster: "databases" },
   { id: "be",      label: "Backend",         x: 50, y: 50, cluster: "backend" },
   { id: "fe",      label: "Dashboards",      x: 82, y: 58, cluster: "frontend" },
   { id: "net",     label: "Networking",      x: 30, y: 82, cluster: "infrastructure" },
-  { id: "devops",  label: "DevOps",          x: 62, y: 82, cluster: "devops" },
+  { id: "delivery", label: "Web Delivery",    x: 62, y: 82, cluster: "delivery" },
   { id: "rca",     label: "RCA Research",    x: 80, y: 86, cluster: "observability" },
 ];
 
 const EDGES: [string, string][] = [
   ["linux", "auto"], ["linux", "db"], ["linux", "net"],
-  ["auto",  "be"],   ["auto", "devops"],
+  ["auto",  "be"],   ["auto", "delivery"],
   ["be",    "db"],   ["be", "fe"],
   ["fe",    "mon"],
   ["mon",   "rca"],
-  ["devops","mon"],
-  ["net",   "devops"],
+  ["delivery","mon"],
+  ["net",   "delivery"],
 ];
 
 export function InfrastructureMap() {

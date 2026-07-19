@@ -73,7 +73,7 @@ export function RCALab() {
       <SectionHeader
         kicker="08 · RCA Research Lab"
         title="A catalogue of methods, not a product."
-        description="Independent research into how rule-based systems, statistical methods, and ML can support infrastructure root-cause analysis. Human validation remains essential."
+        description="Independent research into how rule-based systems, statistical methods, and ML can support TechStack root-cause analysis. Human validation remains essential."
       />
 
       {/* Research banner */}

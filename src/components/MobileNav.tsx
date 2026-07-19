@@ -5,12 +5,9 @@ import SGRLogo from './SGRLogo';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
-  { label: 'Command Centre', href: '#infrastructure' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
+  { label: 'Tech Stack', href: '#tech-stack' },
   { label: 'GitHub', href: '#github' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Research', href: '#research' },
+  { label: 'Experience', href: '#mission-log' },
   { label: 'Resume', href: '#resume' },
   { label: 'Contact', href: '#contact' },
 ];

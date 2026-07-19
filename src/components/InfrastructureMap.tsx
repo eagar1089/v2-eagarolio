@@ -28,27 +28,27 @@ const INFRA_NODES: InfraNode[] = [
     id: 'automation',
     name: 'Automation',
     icon: Cpu,
-    tools: ['Bash', 'Python', 'Cron', 'Systemd', 'REST APIs', 'CI/CD'],
-    responsibilities: ['Infrastructure automation', 'Server-side automation', 'Deployment workflows', 'Scheduled tasks'],
-    projects: ['Data Collector', 'Cron Monitoring', 'Server Inventory'],
-    learning: ['Go-based agents', 'Infrastructure as Code', 'Policy automation'],
+    tools: ['Bash', 'Python', 'Jenkins', 'GitLab CI/CD', 'GitHub Actions', 'Cron', 'REST APIs'],
+    responsibilities: ['Pipeline automation', 'Server-side automation', 'Deployment workflows', 'Scheduled tasks'],
+    projects: ['2-Tier Flask CI/CD', 'Pipeline Hardening', 'Data Collector'],
+    learning: ['Reusable pipelines', 'Infrastructure as code', 'Policy automation'],
     color: '#7B61FF',
   },
   {
     id: 'monitoring',
     name: 'Monitoring',
     icon: Monitor,
-    tools: ['Custom dashboards', 'Log analysis', 'REST APIs', 'MySQL', 'Caching'],
-    responsibilities: ['System monitoring', 'Dashboard development', 'Alerting', 'Historical tracking'],
-    projects: ['Cron Monitoring', 'F5 LiveOps', 'RCA Research'],
-    learning: ['Advanced observability', 'eBPF monitoring', 'Distributed tracing'],
+    tools: ['Prometheus', 'Grafana', 'Node Exporter', 'Custom dashboards', 'Log analysis', 'Trivy'],
+    responsibilities: ['Metrics and monitoring', 'Dashboard development', 'Alerting', 'Vulnerability visibility'],
+    projects: ['Observability Stack', 'Cron Monitoring', 'F5 LiveOps'],
+    learning: ['OpenTelemetry', 'Distributed tracing', 'Advanced observability'],
     color: '#006466',
   },
   {
     id: 'databases',
     name: 'Databases',
     icon: Database,
-    tools: ['MySQL', 'Query optimisation', 'Schema design', 'Caching strategies', 'Data modelling'],
+    tools: ['MySQL', 'MongoDB', 'Query optimisation', 'Schema design', 'Caching strategies', 'Data modelling'],
     responsibilities: ['Database schema design', 'Query optimisation', 'Historical data storage', 'Inventory systems'],
     projects: ['Cron Monitoring', 'Server Inventory', 'F5 LiveOps'],
     learning: ['Advanced indexing', 'Read replicas', 'Sharding strategies'],
@@ -58,8 +58,8 @@ const INFRA_NODES: InfraNode[] = [
     id: 'backend',
     name: 'Backend Systems',
     icon: Code,
-    tools: ['PHP', 'Node.js', 'Express', 'Go', 'REST APIs', 'Background jobs'],
-    responsibilities: ['REST API development', 'Data collectors', 'API integrations', 'Background processing'],
+    tools: ['PHP', 'Laravel', 'Python', 'Flask', 'FastAPI', 'REST APIs'],
+    responsibilities: ['Laravel development', 'Python API development', 'API integrations', 'Backend processing'],
     projects: ['Cron Monitoring', 'F5 LiveOps', 'Data Collector'],
     learning: ['Microservices', 'gRPC', 'Event sourcing'],
     color: '#3E1F47',
@@ -68,7 +68,7 @@ const INFRA_NODES: InfraNode[] = [
     id: 'frontend',
     name: 'Frontend Dashboards',
     icon: Monitor,
-    tools: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'DataTables', 'Charts'],
+    tools: ['JavaScript', 'React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Charts'],
     responsibilities: ['Responsive dashboards', 'Data visualisation', 'Admin interfaces', 'Interactive components'],
     projects: ['Cron Monitoring', 'F5 LiveOps', 'Server Inventory'],
     learning: ['Advanced animation', 'WebGL visualisation', 'PWA'],
@@ -78,25 +78,25 @@ const INFRA_NODES: InfraNode[] = [
     id: 'networking',
     name: 'Networking',
     icon: Wifi,
-    tools: ['Nginx', 'F5 BIG-IP', 'HTTP/S', 'VIPs', 'Load balancing'],
-    responsibilities: ['F5 infrastructure management', 'Load balancer configuration', 'VIP management', 'Traffic routing'],
+    tools: ['F5 REST API', 'HTTP', 'JSON', 'React dashboards'],
+    responsibilities: ['Consume read-only F5 API data', 'Transform API responses', 'Display status on dashboards', 'Build search and filtering views'],
     projects: ['F5 LiveOps'],
-    learning: ['Service mesh', 'Advanced L4/L7', 'Traffic management'],
+    learning: ['API integration', 'Dashboard data modelling', 'Operational visualisation'],
     color: '#1B3A4B',
   },
   {
-    id: 'devops',
-    name: 'DevOps',
+    id: 'web-development',
+    name: 'Web Development',
     icon: Cloud,
-    tools: ['Docker', 'Docker Compose', 'Git', 'GitHub', 'CI/CD', 'Nginx deployments'],
-    responsibilities: ['Containerisation', 'Environment management', 'Deployment automation', 'Infrastructure monitoring'],
-    projects: ['Server Inventory', 'Data Collector', 'Cron Monitoring'],
-    learning: ['Kubernetes', 'Terraform', 'Cloud platforms'],
+    tools: ['Docker', 'Docker Compose', 'AWS EC2', 'Git', 'GitHub Actions', 'Jenkins', 'Trivy'],
+    responsibilities: ['Web application development', 'Application deployment', 'Frontend integration', 'Production support'],
+    projects: ['2-Tier Flask Application', 'Digital Memory Jar', 'Learn Mate'],
+    learning: ['Application architecture', 'API integration', 'Performance optimisation'],
     color: '#0B525B',
   },
 ];
 
-export default function InfrastructureMap() {
+export default function TechStackMap() {
   const [selectedNode, setSelectedNode] = useState<InfraNode | null>(null);
 
   const handleSelect = useCallback((node: InfraNode) => {
@@ -111,27 +111,27 @@ export default function InfrastructureMap() {
     { x: 50, y: 50 },  // Backend - center
     { x: 90, y: 70 },  // Frontend - bottom-right
     { x: 35, y: 85 },  // Networking - bottom-center-left
-    { x: 70, y: 85 },  // DevOps - bottom-center-right
+    { x: 70, y: 85 },  // Web development - bottom-center-right
   ];
 
   return (
-    <section id="infrastructure" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="tech-stack" className="px-4 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20 xl:px-16" aria-label="Technology stack">
+      <div className="mx-auto w-full max-w-7xl">
         {/* Header */}
-        <div className="mb-12 text-center">
-          <span className="text-xs font-mono text-[#00D4AA] uppercase tracking-widest">02 - Command Centre</span>
+        <div className="mb-8 text-center sm:mb-10">
+          <span className="text-xs font-mono text-[#00D4AA] uppercase tracking-widest">02 - Tech Stack</span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
-            Infrastructure Command Centre
+            Technology Stack
           </h2>
-          <p className="text-[#7D8590] max-w-xl mx-auto">
-            Interactive system map of engineering capabilities. Select a node to explore tools, responsibilities, and related projects.
+          <p className="text-sm text-[#7D8590] max-w-xl mx-auto">
+            An interactive map of the technologies, platforms, and engineering tools used across my projects.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.95fr)] lg:gap-10 xl:gap-12">
           {/* System Map */}
-          <div className="lg:col-span-2">
-            <div className="relative aspect-[4/3] bg-[#0C121D] rounded-xl border border-[#1B3A4B] overflow-hidden p-4">
+          <div className="min-w-0">
+            <div className="neon-surface neon-cyan relative aspect-[4/3] max-h-[540px] min-h-[360px] overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_50%,rgba(0,100,102,0.08),transparent_58%)] p-3 sm:p-4">
               {/* Connection lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
                 {INFRA_NODES.map((node, i) => {
@@ -167,7 +167,7 @@ export default function InfrastructureMap() {
                     aria-label={`Select ${node.name}`}
                   >
                     <div
-                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center border transition-all duration-300 ${
+                      className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300 sm:h-12 sm:w-12 ${
                         isSelected
                           ? 'bg-[#0C121D] border-[#00D4AA] shadow-[0_0_20px_rgba(0,212,170,0.2)]'
                           : 'bg-[#070B12] border-[#1B3A4B] hover:border-[#00D4AA] hover:shadow-[0_0_15px_rgba(0,100,102,0.15)]'
@@ -187,14 +187,14 @@ export default function InfrastructureMap() {
           </div>
 
           {/* Detail Panel */}
-          <div className="bg-[#0C121D] rounded-xl border border-[#1B3A4B] p-6 overflow-hidden">
+          <div className="neon-surface neon-violet min-w-0 overflow-hidden rounded-2xl p-4 backdrop-blur-xl sm:p-5 lg:pl-7">
             {selectedNode ? (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-center gap-3 mb-6">
+                <div className="mb-5 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ borderColor: selectedNode.color }}>
                     <span style={{ color: selectedNode.color }}><selectedNode.icon size={18} /></span>
                   </div>
@@ -206,7 +206,7 @@ export default function InfrastructureMap() {
                   </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3.5">
                   <div>
                     <h4 className="text-[10px] font-mono text-[#7D8590] uppercase tracking-wider mb-2">Tools</h4>
                     <div className="flex flex-wrap gap-1">

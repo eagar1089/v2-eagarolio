@@ -181,9 +181,9 @@ export const projects: Project[] = [
   {
     slug: "f5-liveops",
     name: "F5 LiveOps Dashboard",
-    tagline: "Search and understand F5 BIG-IP infrastructure in seconds.",
+    tagline: "A dashboard that presents read-only F5 API data in a clear interface.",
     purpose:
-      "A modern operations console for searching and understanding F5 BIG-IP relationships - VIPs, pools, members, nodes, and live status - without touching the devices directly.",
+      "A web dashboard that consumes read-only data from the F5 REST API and presents relevant status and relationship information through searchable views.",
     status: "production",
     role: "Backend and frontend developer",
     category: "operations",
@@ -194,18 +194,18 @@ export const projects: Project[] = [
       "Search by VIP IP, VIP:port, pool member, node IP, VIP name, or pool name",
       "Full relationship graph: Device → VIP → Pool → Members → Node",
       "Live status and historical remarks",
-      "No software installed on F5 devices",
-      "Frontend never calls F5 devices directly",
+      "Read-only F5 REST API integration",
+      "Clear dashboard display of API responses",
     ],
 
     stack: ["F5 iControl REST", "Node.js", "Express", "MySQL", "React", "TypeScript", "WebSocket"],
 
     problem:
-      "Engineers needed a fast way to trace a single IP through the entire F5 topology - VIP, pool, members, nodes, and status - across multiple devices. The existing process was manual and slow.",
+      "Operational F5 data needed to be easier to read and search through a web dashboard instead of reviewing raw API responses.",
 
     constraints: [
-      "Nothing may be installed on F5 devices",
-      "Frontend never talks to F5 directly",
+      "Use read-only API access",
+      "Present API responses clearly without modifying F5 configuration",
       "Polling must be rate-limited and polite",
       "Relationships must stay consistent even as configs change",
     ],

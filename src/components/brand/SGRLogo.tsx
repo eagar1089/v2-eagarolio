@@ -219,7 +219,7 @@ export const SGRLogo = forwardRef<SVGSVGElement, SGRLogoProps>(function SGRLogo(
         letterSpacing="2"
         fill="#7D8590"
       >
-        INFRASTRUCTURE
+        TechStack
       </text>
 
       {/* Cardinal micro-marks outside the core */}

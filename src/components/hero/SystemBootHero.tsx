@@ -219,7 +219,7 @@ export function SystemBootHero({ github }: Props) {
           <MagneticButton
             onClick={() => document.getElementById("command-centre")?.scrollIntoView({ behavior: "smooth" })}
           >
-            Explore Infrastructure
+            Explore TechStack
             <ArrowUpRight className="h-4 w-4" />
           </MagneticButton>
           <MagneticButton href={portfolio.social.github.url} variant="secondary">

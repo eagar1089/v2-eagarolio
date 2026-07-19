@@ -3,14 +3,11 @@ import { AnimatePresence } from 'framer-motion';
 import BackgroundSystem from './components/Background';
 import PortfolioPreloader from './components/Preloader';
 import SystemBootHero from './components/Hero';
-import InfrastructureMap from './components/InfrastructureMap';
-import CapabilityConstellation from './components/SkillsConstellation';
-import ProjectMissionControl from './components/Projects';
-import ArchitectureExplorer from './components/ArchitectureExplorer';
+import TechStackMap from './components/InfrastructureMap';
 import GitHubIntelligence from './components/GitHubSection';
-import MissionLog from './components/MissionLog';
-import RCALab from './components/RCALab';
-import { ResumeConsole, CommunicationUplink } from './components/ResumeContact';
+import { MissionLog } from './components/experience/MissionLog';
+import { ResumeConsole } from './components/resume/ResumeConsole';
+import { CommunicationUplink } from './components/ResumeContact';
 import Footer from './components/ResumeContact';
 import SideRails from './components/SideRails';
 import MobileNavigation from './components/MobileNav';
@@ -18,16 +15,44 @@ import CustomCursor from './components/CustomCursor';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const [heroReady, setHeroReady] = useState(false);
 
   useEffect(() => {
     // Check if this is a direct load
     const hasVisited = sessionStorage.getItem('sgr_preloaded');
     if (hasVisited) {
+      setHeroReady(true);
       setLoading(false);
     }
   }, []);
 
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('.portfolio-main > section:not(#hero)'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    sections.forEach((section) => section.classList.add('immersive-section'));
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      sections.forEach((section) => section.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.08 }
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   const handlePreloadComplete = useCallback(() => {
+    setHeroReady(true);
     setLoading(false);
     sessionStorage.setItem('sgr_preloaded', 'true');
   }, []);
@@ -63,36 +88,24 @@ export default function App() {
       {/* Main content */}
       <main id="main-content" className="portfolio-main relative z-10">
         {/* 1. System Boot Hero */}
-        <SystemBootHero />
+        <SystemBootHero ready={heroReady} />
 
-        {/* 2. Infrastructure Command Centre */}
-        <InfrastructureMap />
+        {/* 2. Technology Stack */}
+        <TechStackMap />
 
-        {/* 4. Capability Constellation */}
-        <CapabilityConstellation />
-
-        {/* 5. Project Mission Control */}
-        <ProjectMissionControl />
-
-        {/* 6. Architecture Explorer */}
-        <ArchitectureExplorer />
-
-        {/* 7. GitHub Intelligence */}
+        {/* 3. GitHub Intelligence */}
         <GitHubIntelligence />
 
-        {/* 7. Career Mission Log */}
+        {/* 4. Career Mission Log with project modals */}
         <MissionLog />
 
-        {/* 8. RCA Research Lab */}
-        <RCALab />
-
-        {/* 9. Resume Console */}
+        {/* 5. Resume Console */}
         <ResumeConsole />
 
-        {/* 10. Communication Uplink */}
+        {/* 6. Communication Uplink */}
         <CommunicationUplink />
 
-        {/* 11. Footer */}
+        {/* Footer */}
         <Footer />
       </main>
     </div>

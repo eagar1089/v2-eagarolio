@@ -119,7 +119,7 @@ export function CommunicationUplink() {
     <section id="contact" className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12 text-center">
-          <span className="text-xs font-mono text-[#4D194D] uppercase tracking-widest">09 - Communication Uplink</span>
+          <span className="text-xs font-mono text-[#4D194D] uppercase tracking-widest">06 - Communication Uplink</span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
             Communication Uplink
           </h2>
@@ -234,9 +234,6 @@ export function CommunicationUplink() {
                 >
                   {formState === 'sending' ? 'Transmitting...' : 'Send Message'}
                 </button>
-                <p className="text-[9px] font-mono text-[#3E1F47] text-center">
-                  Note: Connect a backend service (e.g., Formspree, Netlify Forms) to receive messages.
-                </p>
               </form>
             )}
           </div>

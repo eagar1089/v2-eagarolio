@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Code2, ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink, Code2, ChevronDown, ChevronRight, ChevronUp } from 'lucide-react';
 
 interface ArchStep {
   label: string;
@@ -64,10 +64,10 @@ const PROJECTS: Project[] = [
   {
     slug: 'f5-liveops',
     name: 'F5 LiveOps Dashboard',
-    purpose: 'A modern operations platform for searching and understanding F5 BIG-IP infrastructure.',
-    status: 'active',
+    purpose: 'A web dashboard for displaying and searching read-only F5 REST API data.',
+    status: 'completed',
     category: 'Operations Platform',
-    description: 'An operations dashboard that provides modern search and navigation through F5 BIG-IP infrastructure data. The system queries F5 REST APIs, caches latest state, and provides a responsive interface for searching VIPs, pools, nodes, and their relationships. Nothing is installed on F5 devices.',
+    description: 'A responsive dashboard that consumes read-only F5 REST API responses and presents VIP, pool, node, status, and relationship data through searchable views.',
     features: [
       'Search by VIP IP, port, pool member, node, VIP name, or pool name',
       'Complete relationship flow: Device → VIP → Pool → Members → Node',
@@ -91,13 +91,13 @@ const PROJECTS: Project[] = [
       { label: 'Backend API', type: 'api' },
       { label: 'Operations Dashboard', type: 'ui' },
     ],
-    impact: 'Provides modern, searchable access to F5 infrastructure data that was previously only available through the F5 management interface.',
+    impact: 'Makes read-only F5 API data easier to understand and search from a dashboard.',
   },
   {
     slug: 'server-inventory',
     name: 'Modern Server Inventory Platform',
     purpose: 'Modernise a legacy PHP and MySQL infrastructure inventory platform.',
-    status: 'in-progress',
+    status: 'completed',
     category: 'Infrastructure Management',
     description: 'Migration of a legacy PHP, MySQL, AdminLTE and DataTables server inventory application to a modern React and Express architecture. The platform manages server inventory data collection, Linux and hardware information, server ownership mapping, and provides CSV/Excel export with a responsive dashboard redesign.',
     features: [
@@ -129,43 +129,10 @@ const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/eagar1089',
   },
   {
-    slug: 'rca-research',
-    name: 'AI-Based Root Cause Analysis Research',
-    purpose: 'Explore how rule-based systems, statistical methods, anomaly detection, and machine learning can support infrastructure RCA.',
-    status: 'research',
-    category: 'Research & Systems Design',
-    description: 'Research into applying statistical methods, anomaly detection, and hybrid rule-based/ML approaches for infrastructure root cause analysis across Linux systems, MySQL, MongoDB, Elasticsearch, and Redis. Focuses on rolling averages, Z-score, MAD, EWMA, percentile analysis, baseline detection, and correlation analysis.',
-    features: [
-      'Statistical methods: Z-score, MAD, Robust Z-score, EWMA',
-      'Percentile analysis: p95, p99 baselines',
-      'Rolling averages and median calculations',
-      'Standard deviation and baseline detection',
-      'Correlation analysis across metrics',
-      'Hybrid rule-based and ML reasoning approaches',
-      'Application across Linux, MySQL, MongoDB, Elasticsearch, Redis',
-    ],
-    challenges: [
-      'Distinguishing real anomalies from normal infrastructure variation',
-      'Combining rule-based precision with ML flexibility',
-      'Defining appropriate baselines for diverse infrastructure components',
-      'Validating RCA accuracy without production deployment',
-    ],
-    technologies: ['Statistical Methods', 'Z-score', 'MAD', 'EWMA', 'Percentiles', 'Python', 'MySQL', 'Elasticsearch'],
-    architecture: [
-      { label: 'Metric Collection', type: 'process' },
-      { label: 'Baseline Engine', type: 'process' },
-      { label: 'Statistical Analysis', type: 'process' },
-      { label: 'Anomaly Detection', type: 'process' },
-      { label: 'Correlation Engine', type: 'process' },
-      { label: 'RCA Dashboard', type: 'ui' },
-    ],
-    impact: 'Research foundation for automated infrastructure RCA that reduces time-to-resolution for complex system incidents.',
-  },
-  {
     slug: 'infra-collector',
     name: 'Infrastructure Data Collector',
     purpose: 'Collect system and infrastructure information using lightweight server-side agents.',
-    status: 'active',
+    status: 'completed',
     category: 'Infrastructure Tooling',
     description: 'A lightweight data collection system using Bash or Go-based compiled agents deployed on Linux servers. The collector gathers system and infrastructure information with minimal runtime dependencies, versioning, hash verification, central configuration, and automated scheduled execution.',
     features: [
@@ -200,10 +167,10 @@ function ProjectCard({ project }: { project: Project }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-[#0C121D] rounded-xl border border-[#1B3A4B] overflow-hidden">
+    <div className="overflow-hidden rounded-xl border border-[#1B3A4B] bg-[#0C121D]/85 shadow-[0_14px_36px_rgba(0,0,0,0.12)] backdrop-blur-xl">
       {/* Header */}
-      <div className="p-5 border-b border-[#1B3A4B]">
-        <div className="flex items-start justify-between mb-3">
+      <div className="border-b border-[#1B3A4B] p-4 sm:px-5 sm:py-4">
+        <div className="mb-2.5 flex items-start justify-between gap-4">
           <div>
             <span className={`text-[10px] font-mono px-2 py-0.5 rounded uppercase tracking-wider ${
               project.status === 'active' ? 'text-[#00D4AA] bg-[#00D4AA] bg-opacity-10' :
@@ -212,7 +179,7 @@ function ProjectCard({ project }: { project: Project }) {
             }`}>
               {project.status}
             </span>
-            <h3 className="text-lg font-semibold mt-2">{project.name}</h3>
+            <h3 className="mt-2 text-base font-semibold sm:text-lg">{project.name}</h3>
             <span className="text-[10px] font-mono text-[#7D8590]">{project.category}</span>
           </div>
           <button
@@ -223,22 +190,22 @@ function ProjectCard({ project }: { project: Project }) {
             {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </button>
         </div>
-        <p className="text-xs text-[#B8C2CC]">{project.purpose}</p>
+        <p className="max-w-3xl text-xs leading-relaxed text-[#B8C2CC]">{project.purpose}</p>
       </div>
 
       {/* Architecture flow */}
-      <div className="p-5 border-b border-[#1B3A4B]">
-        <h4 className="text-[10px] font-mono text-[#7D8590] uppercase tracking-wider mb-3">Architecture Flow</h4>
-        <div className="flex flex-wrap items-center gap-2">
+      <div className="border-b border-[#1B3A4B] px-4 py-3.5 sm:px-5">
+        <h4 className="mb-2.5 text-[9px] font-mono uppercase tracking-wider text-[#7D8590]">Architecture Flow</h4>
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
           {project.architecture.map((step, i) => (
-            <div key={i} className="flex items-center gap-2">
+            <div key={i} className="flex shrink-0 items-center gap-1.5">
               <div
-                className="flex flex-col items-center gap-1 px-3 py-2 rounded-lg bg-[#070B12] border border-[#1B3A4B] min-w-[70px]"
+                className="flex min-w-[64px] items-center justify-center rounded-md border border-[#1B3A4B] bg-[#070B12] px-2.5 py-1.5"
               >
                 <span className="text-[9px] font-mono text-center leading-tight">{step.label}</span>
               </div>
               {i < project.architecture.length - 1 && (
-                <span className="text-[#1B3A4B] text-xs">→</span>
+                <ChevronRight size={11} className="shrink-0 text-[#1B3A4B]" />
               )}
             </div>
           ))}
@@ -251,7 +218,7 @@ function ProjectCard({ project }: { project: Project }) {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           transition={{ duration: 0.3 }}
-          className="p-5 space-y-4"
+          className="space-y-4 p-4 sm:p-5"
         >
           <div>
             <h5 className="text-[10px] font-mono text-[#7D8590] uppercase tracking-wider mb-2">Description</h5>
@@ -301,7 +268,7 @@ function ProjectCard({ project }: { project: Project }) {
       )}
 
       {/* Actions */}
-      <div className="p-5 flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2.5 p-4 sm:px-5">
         {project.githubUrl && (
           <a
             href={project.githubUrl}
@@ -331,10 +298,10 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function ProjectMissionControl() {
   return (
-    <section id="projects" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-12 text-center">
-          <span className="text-xs font-mono text-[#4D194D] uppercase tracking-widest">04 - Mission Control</span>
+    <section id="projects" className="px-4 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20 xl:px-16">
+      <div className="mx-auto w-full max-w-5xl">
+        <div className="mb-8 text-center sm:mb-10">
+          <span className="text-xs font-mono text-[#4D194D] uppercase tracking-widest">03 - Mission Control</span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
             Project Mission Control
           </h2>
@@ -344,7 +311,7 @@ export default function ProjectMissionControl() {
         </div>
 
         {/* All projects on single page */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {PROJECTS.map(project => (
             <ProjectCard key={project.slug} project={project} />
           ))}

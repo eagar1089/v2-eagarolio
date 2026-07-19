@@ -12,104 +12,139 @@ export interface MissionEntry {
   responsibilities: string[];
   tools: string[];
   lessons: string[];
+  experience?: string;
   relatedProjects?: string[]; // project slugs
+  projectHighlights?: {
+    name: string;
+    description: string;
+    status: "current" | "completed" | "degree";
+    url?: string;
+    projectSlug?: string;
+  }[];
 }
 
 export const missionLog: MissionEntry[] = [
   {
-    id: "v4",
-    period: "2024 - Present",
-    version: "v4.0",
-    title: "Infrastructure Mission Control",
-    focus:
-      "Designing and operating monitoring platforms, operational dashboards, and automation systems across production Linux infrastructure.",
-    systems: [
-      "Linux fleet (2,000-3,000 servers)",
-      "F5 BIG-IP environment",
-      "MySQL, PHP-FPM, Nginx stacks",
-    ],
-    responsibilities: [
-      "Designed and built the Distributed Cron Monitoring Platform",
-      "Developed the F5 LiveOps operations dashboard",
-      "Led the migration plan for the Server Inventory Platform",
-      "Conducted independent RCA research across statistical and ML methods",
-      "Maintained and hardened production collectors and ingestion APIs",
-    ],
-    tools: [
-      "Linux",
-      "Bash",
-      "PHP",
-      "Node.js",
-      "Go",
-      "MySQL",
-      "Nginx",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Docker",
-    ],
-    lessons: [
-      "Good operational data is the foundation of every other system",
-      "Minimal collectors win over complex agents in heterogeneous fleets",
-      "Dashboards earn trust through consistency, not flashiness",
-    ],
-    relatedProjects: [
-      "distributed-cron-monitoring",
-      "f5-liveops",
-      "server-inventory-platform",
-      "ai-rca-research",
-      "infrastructure-data-collector",
-    ],
+    id: "diploma",
+    period: "2021",
+    version: "v1.0",
+    title: "Diploma Completed",
+    focus: "Completed my diploma in 2021, building a practical technical foundation before beginning my professional career in Linux administration.",
+    systems: ["Diploma", "Technical foundations"],
+    responsibilities: ["Completed diploma studies in 2021"],
+    tools: [],
+    lessons: ["Built the technical foundation for entering infrastructure operations"],
   },
   {
-    id: "v3",
-    period: "Earlier",
-    version: "v3.0",
-    title: "Linux Administration & Backend Systems",
-    focus:
-      "Linux server administration, production troubleshooting, backend APIs, and data collectors.",
-    systems: [
-      "Ubuntu and CentOS production servers",
-      "Nginx + PHP-FPM stacks",
-      "MySQL databases",
-    ],
-    responsibilities: [
-      "Administered Linux servers in production environments",
-      "Diagnosed and resolved operational incidents",
-      "Developed backend services and REST APIs",
-      "Wrote automation scripts for recurring operational tasks",
-    ],
-    tools: [
-      "Ubuntu",
-      "CentOS",
-      "Bash",
-      "Nginx",
-      "PHP",
-      "PHP-FPM",
-      "MySQL",
-      "Cron",
-    ],
-    lessons: [
-      "Production systems reward patience and methodical debugging",
-      "Automation is only as good as its observability",
-    ],
-  },
-  {
-    id: "v2",
-    period: "Earlier",
+    id: "justdial-first",
+    period: "November 2021 - February 2024",
     version: "v2.0",
-    title: "Full-Stack Foundations",
-    focus: "Building web applications across PHP, Node.js, and modern frontend stacks.",
-    systems: ["LAMP stacks", "Node.js + Express services", "React frontends"],
+    title: "Joined Justdial - Linux Administrator",
+    experience: "2 years 3 months",
+    focus: "Started my professional career at Justdial as a Linux Administrator, learning how production systems are operated, supported, and troubleshot in a real working environment.",
+    systems: ["Linux administration", "Production troubleshooting", "System operations"],
     responsibilities: [
-      "Developed full-stack features from schema to UI",
-      "Built responsive dashboards with DataTables and React",
-      "Integrated third-party APIs",
+      "Joined Justdial in November 2021",
+      "Worked on Linux administration and operational support",
+      "Left Justdial in February 2024 while continuing higher education",
     ],
-    tools: ["PHP", "Node.js", "Express", "React", "JavaScript", "Tailwind CSS"],
+    tools: ["Linux", "Troubleshooting"],
+    lessons: ["Gained initial hands-on experience supporting production systems"],
+    projectHighlights: [
+      {
+        name: "F5 LiveOps Dashboard",
+        description: "Web dashboard that consumes read-only F5 REST API data and presents it through clear, searchable views.",
+        status: "completed",
+        projectSlug: "f5-liveops",
+      },
+      {
+        name: "Modern Server Inventory Platform",
+        description: "Modernisation work for server inventory, operational data access, and responsive administration workflows.",
+        status: "completed",
+        projectSlug: "server-inventory-platform",
+      },
+      {
+        name: "Infrastructure Data Collector",
+        description: "Lightweight collection workflow for sending consistent Linux infrastructure data to central systems.",
+        status: "completed",
+        projectSlug: "infrastructure-data-collector",
+      },
+    ],
+  },
+  {
+    id: "be-degree",
+    period: "July 2023 - May 2026",
+    version: "v3.0",
+    title: "BE Degree and Applied Development",
+    focus: "Completed a BE degree while turning coursework and independent learning into practical web, IoT, automation, and application projects.",
+    systems: ["BE degree", "Full-stack development", "IoT", "Application delivery"],
+    responsibilities: [
+      "Pursued BE Computer Engineering from July 2023 to May 2026",
+      "Built and maintained application projects across React, Next.js, Flask, IoT, and deployment workflows",
+      "Used GitHub projects to apply academic concepts to working software",
+    ],
+    tools: ["PHP", "Laravel", "JavaScript", "React", "Next.js", "Python", "Flask", "FastAPI"],
+    lessons: ["Strengthened application-development skills while continuing to grow as an infrastructure professional"],
+    projectHighlights: [
+      {
+        name: "Digital Memory Jar",
+        description: "AI-powered digital memory logging application and the base project for later delivery improvements.",
+        status: "degree",
+        url: "https://github.com/eagar1089/Digital-MemoryJar",
+      },
+      {
+        name: "IoT Production Tracker",
+        description: "Web application for interacting with microcontrollers and supporting production administration workflows.",
+        status: "degree",
+        url: "https://github.com/eagar1089/IoT-Production-Tracker",
+      },
+      {
+        name: "2-Tier Flask Deployment Project",
+        description: "Two-tier Flask application used to practise automated delivery, containers, and cloud deployment.",
+        status: "degree",
+        url: "https://github.com/eagar1089/2tier_Flask_App-DevOps_Project",
+      },
+      {
+        name: "CI/CD Hardening - DMJ",
+        description: "Delivery-pipeline hardening work for the Digital Memory Jar project.",
+        status: "degree",
+        url: "https://github.com/eagar1089/cicd_hardening-DMj",
+      },
+      {
+        name: "Learn Mate - Next.js",
+        description: "Next.js application created to extend modern frontend and full-stack development skills.",
+        status: "degree",
+        url: "https://github.com/eagar1089/learn_mate-nextjs",
+      },
+    ],
+  },
+  {
+    id: "justdial-current",
+    period: "July 2026 - Present",
+    version: "v4.0",
+    title: "Justdial - Linux Administrator",
+    experience: "Current role",
+    focus: "Working as a Linux Administrator with responsibilities spanning production support, internal monitoring, automation, and web application initiatives.",
+    systems: ["Linux administration", "Application deployment", "Web development", "Production support"],
+    responsibilities: [
+      "Started the current Linux Administrator role in July 2026",
+      "Administer and troubleshoot Linux-based application environments",
+      "Contribute to web development projects alongside infrastructure responsibilities",
+      "Support application deployment, permissions, services, and logs",
+      "Collaborate with development teams to resolve production issues",
+    ],
+    tools: ["Linux", "Nginx", "Bash", "PHP", "Laravel", "JavaScript", "React", "Next.js", "Python", "Flask", "FastAPI", "MySQL", "MongoDB"],
     lessons: [
-      "A strong backend foundation makes frontend work much easier",
-      "Type safety pays off quickly in larger projects",
+      "Developed an understanding of both how applications are built and how they run in production",
+      "Continued learning across infrastructure, deployment, and application development",
+    ],
+    projectHighlights: [
+      {
+        name: "Distributed Cron Monitoring Platform",
+        description: "Current Justdial project providing centralised cron visibility, auditing, and change tracking across Linux infrastructure.",
+        status: "current",
+        projectSlug: "distributed-cron-monitoring",
+      },
     ],
   },
 ];
@@ -146,10 +181,10 @@ export const capabilities: CapabilityCluster[] = [
     ],
   },
   {
-    id: "devops",
-    name: "DevOps & Automation",
+    id: "delivery",
+    name: "Application Delivery and Automation",
     description:
-      "Containerised development, CI/CD concepts, deployments, and infrastructure automation.",
+      "Application deployments, containerised development workflows, and infrastructure automation.",
     technologies: [
       { id: "docker",         name: "Docker",         usedIn: ["server-inventory-platform"] },
       { id: "docker-compose", name: "Docker Compose", usedIn: ["server-inventory-platform"] },
@@ -165,6 +200,10 @@ export const capabilities: CapabilityCluster[] = [
     description: "APIs, collectors, background jobs, and integrations.",
     technologies: [
       { id: "php",      name: "PHP",        usedIn: ["server-inventory-platform", "distributed-cron-monitoring"] },
+      { id: "laravel",  name: "Laravel",    usedIn: [] },
+      { id: "python",   name: "Python",     usedIn: ["infrastructure-data-collector"] },
+      { id: "flask",    name: "Flask",      usedIn: [] },
+      { id: "fastapi",  name: "FastAPI",    usedIn: [] },
       { id: "nodejs",   name: "Node.js",    usedIn: ["f5-liveops", "distributed-cron-monitoring"] },
       { id: "express",  name: "Express",    usedIn: ["f5-liveops", "server-inventory-platform"] },
       { id: "go",       name: "Go",         usedIn: ["infrastructure-data-collector"] },
@@ -177,6 +216,7 @@ export const capabilities: CapabilityCluster[] = [
     description:
       "Responsive operational dashboards and data visualisation.",
     technologies: [
+      { id: "javascript", name: "JavaScript",   usedIn: ["f5-liveops", "server-inventory-platform", "distributed-cron-monitoring"] },
       { id: "react",      name: "React",        usedIn: ["f5-liveops", "server-inventory-platform", "distributed-cron-monitoring"] },
       { id: "nextjs",     name: "Next.js",      usedIn: [] },
       { id: "typescript", name: "TypeScript",   usedIn: ["f5-liveops", "server-inventory-platform", "distributed-cron-monitoring"] },
@@ -191,6 +231,7 @@ export const capabilities: CapabilityCluster[] = [
     description: "Schema design, query optimisation, historical data, and caching.",
     technologies: [
       { id: "mysql",   name: "MySQL",               usedIn: ["distributed-cron-monitoring", "f5-liveops", "server-inventory-platform"] },
+      { id: "mongodb", name: "MongoDB",             usedIn: [] },
       { id: "schema",  name: "Schema design",       usedIn: ["distributed-cron-monitoring", "f5-liveops", "server-inventory-platform"] },
       { id: "query",   name: "Query optimisation",  usedIn: ["distributed-cron-monitoring", "server-inventory-platform"] },
       { id: "history", name: "Historical storage",  usedIn: ["distributed-cron-monitoring", "f5-liveops"] },

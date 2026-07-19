@@ -19,17 +19,35 @@ const FileTextIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
 );
 
+const PAGE_SECTIONS = ['hero', 'tech-stack', 'github', 'mission-log', 'resume', 'contact'];
+
 export default function SideRails() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState(1);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+
+      const viewportMarker = window.innerHeight * 0.5;
+      let current = 0;
+      PAGE_SECTIONS.forEach((id, index) => {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= viewportMarker) {
+          current = index;
+        }
+      });
+      setActiveSection(current + 1);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   const scrollToTop = useCallback(() => {
@@ -55,8 +73,8 @@ export default function SideRails() {
         className="fixed left-5 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col items-center gap-5"
         aria-label="Social navigation"
       >
-        <div className="relative h-20 w-[2px] overflow-hidden rounded-full bg-white/5">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00D4AA]/80 to-transparent breathe-glow" />
+        <div className="rail-line rail-line-cyan h-20">
+          <div className="rail-line-pulse" />
         </div>
 
         <nav className="flex flex-col items-center gap-3">
@@ -79,8 +97,8 @@ export default function SideRails() {
           ))}
         </nav>
 
-        <div className="relative h-20 w-[2px] overflow-hidden rounded-full bg-white/5">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00D4AA]/80 to-transparent breathe-glow" />
+        <div className="rail-line rail-line-cyan h-20">
+          <div className="rail-line-pulse" />
         </div>
 
         <button
@@ -97,8 +115,8 @@ export default function SideRails() {
         className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col items-center gap-6"
         aria-label="System status"
       >
-        <div className="relative w-[1px] h-12 glow-line">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#312244] to-transparent breathe-glow" />
+        <div className="rail-line rail-line-violet h-12">
+          <div className="rail-line-pulse" />
         </div>
 
         <a
@@ -111,25 +129,25 @@ export default function SideRails() {
           </span>
         </a>
 
-        <div className="relative w-[1px] h-12 glow-line">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#312244] to-transparent breathe-glow" />
+        <div className="rail-line rail-line-violet h-12">
+          <div className="rail-line-pulse" />
         </div>
 
         <div className="font-mono text-xs text-[#7D8590]">
-          <span className="text-[#00D4AA]">0</span>
+          <span className="text-[#00D4AA]">{String(activeSection).padStart(2, '0')}</span>
           <span className="text-[#3E1F47] mx-1">/</span>
-          <span>12</span>
+          <span>{String(PAGE_SECTIONS.length).padStart(2, '0')}</span>
         </div>
 
-        <div className="w-[2px] h-32 bg-[#111827] rounded-full overflow-hidden">
+        <div className="rail-line rail-line-violet h-32 overflow-hidden">
           <div
             className="w-full bg-gradient-to-t from-[#006466] via-[#00D4AA] to-[#7B61FF] rounded-full transition-all duration-300"
             style={{ height: `${scrollProgress}%` }}
           />
         </div>
 
-        <div className="relative w-[1px] h-12 glow-line">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#312244] to-transparent breathe-glow" />
+        <div className="rail-line rail-line-violet h-12">
+          <div className="rail-line-pulse" />
         </div>
       </aside>
     </>
