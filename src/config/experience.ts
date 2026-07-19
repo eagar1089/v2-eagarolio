@@ -76,8 +76,8 @@ export const missionLog: MissionEntry[] = [
     period: "July 2023 - May 2026",
     version: "v3.0",
     title: "BE Degree and Applied Development",
-    focus: "Completed a BE degree while turning coursework and independent learning into practical web, IoT, automation, and DevOps projects.",
-    systems: ["BE degree", "Full-stack development", "IoT", "DevOps and CI/CD"],
+    focus: "Completed a BE degree while turning coursework and independent learning into practical web, IoT, automation, and application projects.",
+    systems: ["BE degree", "Full-stack development", "IoT", "Application delivery"],
     responsibilities: [
       "Pursued BE Computer Engineering from July 2023 to May 2026",
       "Built and maintained application projects across React, Next.js, Flask, IoT, and deployment workflows",
@@ -99,8 +99,8 @@ export const missionLog: MissionEntry[] = [
         url: "https://github.com/eagar1089/IoT-Production-Tracker",
       },
       {
-        name: "2-Tier Flask DevOps Project",
-        description: "Two-tier Flask application used to practise automated CI/CD, containers, and cloud deployment.",
+        name: "2-Tier Flask Deployment Project",
+        description: "Two-tier Flask application used to practise automated delivery, containers, and cloud deployment.",
         status: "degree",
         url: "https://github.com/eagar1089/2tier_Flask_App-DevOps_Project",
       },
@@ -122,12 +122,12 @@ export const missionLog: MissionEntry[] = [
     id: "justdial-current",
     period: "July 2026 - Present",
     version: "v4.0",
-    title: "Rejoined Justdial - Linux Administrator",
+    title: "Justdial - Linux Administrator",
     experience: "Current role",
-    focus: "Rejoined Justdial in July 2026 after completing my BE degree. I work as a Linux Administrator and contribute to internal monitoring, automation, and web application initiatives.",
+    focus: "Working as a Linux Administrator with responsibilities spanning production support, internal monitoring, automation, and web application initiatives.",
     systems: ["Linux administration", "Application deployment", "Web development", "Production support"],
     responsibilities: [
-      "Rejoined Justdial in July 2026 after completing my BE degree",
+      "Started the current Linux Administrator role in July 2026",
       "Administer and troubleshoot Linux-based application environments",
       "Contribute to web development projects alongside infrastructure responsibilities",
       "Support application deployment, permissions, services, and logs",
@@ -181,10 +181,10 @@ export const capabilities: CapabilityCluster[] = [
     ],
   },
   {
-    id: "devops",
-    name: "DevOps & Automation",
+    id: "delivery",
+    name: "Application Delivery and Automation",
     description:
-      "Containerised development, CI/CD concepts, deployments, and infrastructure automation.",
+      "Application deployments, containerised development workflows, and infrastructure automation.",
     technologies: [
       { id: "docker",         name: "Docker",         usedIn: ["server-inventory-platform"] },
       { id: "docker-compose", name: "Docker Compose", usedIn: ["server-inventory-platform"] },

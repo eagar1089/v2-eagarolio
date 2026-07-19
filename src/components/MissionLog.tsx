@@ -67,11 +67,11 @@ const RELEASES: Release[] = [
   {
     version: 'vCurrent',
     date: 'Current',
-    title: 'Full-Stack DevOps',
-    focus: 'Complete operational platform engineering',
+    title: 'Linux and Web Systems',
+    focus: 'Linux operations supported by web development experience',
     systems: ['Linux', 'Go', 'PHP', 'Node.js', 'React', 'MySQL', 'Docker'],
     tools: ['Full-Stack Development', 'Infrastructure Design', 'Observability', 'Automation'],
-    lessons: ['Best tools are built by those who operate them', 'Reliability comes from design, not heroics', 'Continuous learning is the DevOps mindset'],
+    lessons: ['Operational experience improves application design', 'Reliability comes from careful engineering', 'Continuous learning strengthens both systems and development work'],
     icon: Globe,
   },
 ];

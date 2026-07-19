@@ -85,13 +85,13 @@ const INFRA_NODES: InfraNode[] = [
     color: '#1B3A4B',
   },
   {
-    id: 'devops',
-    name: 'DevOps',
+    id: 'web-development',
+    name: 'Web Development',
     icon: Cloud,
     tools: ['Docker', 'Docker Compose', 'AWS EC2', 'Git', 'GitHub Actions', 'Jenkins', 'Trivy'],
-    responsibilities: ['Container delivery', 'CI/CD automation', 'Deployment rollback', 'Security scanning'],
-    projects: ['2-Tier Flask CI/CD', 'Pipeline Hardening', 'Digital Memory Jar'],
-    learning: ['Kubernetes', 'Terraform', 'Cloud-native operations'],
+    responsibilities: ['Web application development', 'Application deployment', 'Frontend integration', 'Production support'],
+    projects: ['2-Tier Flask Application', 'Digital Memory Jar', 'Learn Mate'],
+    learning: ['Application architecture', 'API integration', 'Performance optimisation'],
     color: '#0B525B',
   },
 ];
@@ -111,7 +111,7 @@ export default function TechStackMap() {
     { x: 50, y: 50 },  // Backend - center
     { x: 90, y: 70 },  // Frontend - bottom-right
     { x: 35, y: 85 },  // Networking - bottom-center-left
-    { x: 70, y: 85 },  // DevOps - bottom-center-right
+    { x: 70, y: 85 },  // Web development - bottom-center-right
   ];
 
   return (
