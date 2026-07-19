@@ -131,7 +131,7 @@ export default function TechStackMap() {
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.85fr)_minmax(280px,1fr)] lg:gap-6">
           {/* System Map */}
           <div className="min-w-0">
-            <div className="relative aspect-[4/3] max-h-[540px] min-h-[360px] overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_50%,rgba(0,100,102,0.08),transparent_58%)] p-3 sm:p-4">
+            <div className="neon-surface neon-cyan relative aspect-[4/3] max-h-[540px] min-h-[360px] overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_50%,rgba(0,100,102,0.08),transparent_58%)] p-3 sm:p-4">
               {/* Connection lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
                 {INFRA_NODES.map((node, i) => {
@@ -187,7 +187,7 @@ export default function TechStackMap() {
           </div>
 
           {/* Detail Panel */}
-          <div className="min-w-0 overflow-hidden border-t border-white/10 bg-gradient-to-br from-white/[0.035] to-transparent p-4 backdrop-blur-xl sm:p-5 lg:border-l lg:border-t-0 lg:pl-7">
+          <div className="neon-surface neon-violet min-w-0 overflow-hidden rounded-2xl p-4 backdrop-blur-xl sm:p-5 lg:pl-7">
             {selectedNode ? (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}

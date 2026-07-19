@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { Cloud, Code, ExternalLink, GitBranch, Server } from 'lucide-react';
 import SGRLogo from './SGRLogo';
 import { PORTFOLIO_CONFIG } from '@/config/portfolio';
 import { useReducedMotion } from '@/lib/motion';
@@ -42,6 +42,8 @@ function AnimatedChild({
 export default function SystemBootHero({ ready = true }: { ready?: boolean }) {
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const sectionRef = useRef<HTMLElement>(null);
+  const roleIcons = [Server, GitBranch, Cloud, Code];
+  const roleTones = ['neon-cyan', 'neon-violet', 'neon-cyan', 'neon-magenta'];
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const rect = sectionRef.current?.getBoundingClientRect();
@@ -122,7 +124,8 @@ export default function SystemBootHero({ ready = true }: { ready?: boolean }) {
           {/* Role */}
           <AnimatedChild index={2} ready={ready}>
             <div className="mb-6">
-              <span className="text-lg sm:text-xl font-mono text-[#00D4AA] tracking-wide">
+              <span className="inline-flex items-center gap-2 text-lg font-mono tracking-wide text-[#5eead4] [text-shadow:0_0_18px_rgba(45,212,191,0.45)] sm:text-xl">
+                <Server className="h-5 w-5" aria-hidden="true" />
                 {PORTFOLIO_CONFIG.role}
               </span>
             </div>
@@ -132,25 +135,29 @@ export default function SystemBootHero({ ready = true }: { ready?: boolean }) {
           <AnimatedChild index={3} ready={ready}>
             <div className="mx-auto mb-8 max-w-2xl">
               <div className="flex flex-wrap justify-center gap-2 text-xs font-mono text-[#7D8590]">
-                {PORTFOLIO_CONFIG.subRoles.map((role) => (
-                  <span key={role} className="rounded-full bg-white/[0.04] px-2.5 py-1 text-white/55 backdrop-blur-sm transition-colors hover:bg-white/[0.08] hover:text-white/80">
+                {PORTFOLIO_CONFIG.subRoles.map((role, index) => {
+                  const Icon = roleIcons[index % roleIcons.length];
+                  return (
+                  <span key={role} className={`neon-pill ${roleTones[index % roleTones.length]}`}>
+                    <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                     {role}
                   </span>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </AnimatedChild>
 
           {/* Tagline */}
           <AnimatedChild index={4} ready={ready}>
-            <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-[#B8C2CC] sm:text-lg">
+            <p className="mx-auto mb-8 max-w-2xl text-base font-medium leading-relaxed text-white/90 [text-shadow:0_2px_20px_rgba(0,0,0,0.7)] sm:text-lg">
               {PORTFOLIO_CONFIG.tagline}
             </p>
           </AnimatedChild>
 
           {/* Bio */}
           <AnimatedChild index={5} ready={ready}>
-            <p className="mx-auto mb-12 max-w-xl text-sm leading-relaxed text-[#7D8590]">
+            <p className="mx-auto mb-12 max-w-xl text-sm leading-relaxed text-[#B8C2CC] [text-shadow:0_2px_18px_rgba(0,0,0,0.75)]">
               {PORTFOLIO_CONFIG.bio}
             </p>
           </AnimatedChild>

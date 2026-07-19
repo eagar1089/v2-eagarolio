@@ -126,7 +126,7 @@ function MissionEntry({
       </div>
 
       <div className={`col-start-2 row-start-1 min-w-0 ${index % 2 === 0 ? "md:col-start-1 md:pr-8 lg:pr-10" : "md:col-start-3 md:pl-8 lg:pl-10"}`}>
-        <div className="panel h-full p-4 hover:-translate-y-1 sm:p-[1.125rem]">
+        <div className={`panel neon-surface h-full p-4 hover:-translate-y-1 sm:p-[1.125rem] ${index % 3 === 0 ? "neon-cyan" : index % 3 === 1 ? "neon-violet" : "neon-magenta"}`}>
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full border border-[#22d3ee]/40 bg-[#22d3ee]/10 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-[#22d3ee]">
               {entry.period}

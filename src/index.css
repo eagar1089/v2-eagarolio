@@ -61,8 +61,9 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 12% 18%, rgba(0, 212, 170, 0.055), transparent 30%),
-    radial-gradient(circle at 88% 55%, rgba(123, 97, 255, 0.05), transparent 34%),
+    radial-gradient(circle at 12% 18%, rgba(34, 211, 238, 0.09), transparent 30%),
+    radial-gradient(circle at 88% 55%, rgba(168, 85, 247, 0.075), transparent 34%),
+    radial-gradient(circle at 52% 88%, rgba(236, 72, 153, 0.045), transparent 30%),
     linear-gradient(180deg, #070B12 0%, #080d16 48%, #070B12 100%);
 }
 
@@ -231,6 +232,8 @@ body::before {
 
 /* Option A glass panel used by the selected timeline and resume sections */
 .panel {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0.875rem;
   background: linear-gradient(145deg, rgba(17, 24, 39, 0.56), rgba(12, 18, 29, 0.28));
   -webkit-backdrop-filter: blur(18px) saturate(125%);
@@ -238,9 +241,59 @@ body::before {
   transition: background 300ms ease, transform 300ms ease, box-shadow 300ms ease;
 }
 
+/* Dark neon surfaces: quiet at rest, luminous only at the edges. */
+.neon-surface {
+  --neon-rgb: 34, 211, 238;
+  border-color: rgba(var(--neon-rgb), 0.24);
+  background:
+    linear-gradient(145deg, rgba(var(--neon-rgb), 0.075), rgba(8, 12, 20, 0.88) 58%),
+    #090d15;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 14px 42px rgba(0, 0, 0, 0.24),
+    0 8px 22px rgba(var(--neon-rgb), 0.055);
+  transition: border-color 280ms ease, box-shadow 280ms ease, transform 280ms ease;
+}
+
+.neon-surface:hover {
+  border-color: rgba(var(--neon-rgb), 0.48);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 48px rgba(0, 0, 0, 0.3),
+    0 10px 30px rgba(var(--neon-rgb), 0.11);
+}
+
+.neon-pill {
+  --neon-rgb: 34, 211, 238;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(var(--neon-rgb), 0.34);
+  border-radius: 0.65rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(var(--neon-rgb), 0.075);
+  color: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 8px 24px rgba(var(--neon-rgb), 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.neon-cyan { --neon-rgb: 34, 211, 238; }
+.neon-violet { --neon-rgb: 168, 85, 247; }
+.neon-magenta { --neon-rgb: 236, 72, 153; }
+
 .panel:hover {
   background: linear-gradient(145deg, rgba(17, 24, 39, 0.72), rgba(12, 18, 29, 0.4));
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+}
+
+.panel.neon-surface:hover {
+  background:
+    linear-gradient(145deg, rgba(var(--neon-rgb), 0.11), rgba(8, 12, 20, 0.9) 58%),
+    #090d15;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 48px rgba(0, 0, 0, 0.3),
+    0 10px 30px rgba(var(--neon-rgb), 0.11);
 }
 
 /* Card lighting */

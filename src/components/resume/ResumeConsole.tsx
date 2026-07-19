@@ -85,7 +85,7 @@ export function ResumeConsole() {
       />
 
       <div className="mt-9 grid gap-5 lg:mt-10 lg:grid-cols-[1.28fr_0.92fr] lg:gap-6">
-        <div className="panel relative overflow-hidden border border-white/10 p-0 shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
+        <div className="panel neon-surface neon-cyan relative overflow-hidden p-0">
           {available ? (
             <>
               <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-4 py-3 sm:px-5">
@@ -140,7 +140,7 @@ export function ResumeConsole() {
         </div>
 
         <div className="space-y-3.5">
-          <div className="panel p-4 sm:p-5">
+          <div className="panel neon-surface neon-violet p-4 sm:p-5">
             <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#22d3ee]">
               Profile summary
             </p>
@@ -163,7 +163,7 @@ export function ResumeConsole() {
             </div>
           </div>
 
-          <div className="panel p-4 sm:p-5">
+          <div className="panel neon-surface neon-magenta p-4 sm:p-5">
             <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#a855f7]">
               Quick channels
             </p>
@@ -256,7 +256,7 @@ export function CommunicationUplink() {
 
       <div className="mt-10 grid gap-6 lg:mt-12 lg:grid-cols-[1fr_1.2fr] lg:gap-8">
         {/* Status panel */}
-        <div className="panel relative overflow-hidden p-5 sm:p-6">
+        <div className="panel neon-surface neon-violet relative overflow-hidden p-5 sm:p-6">
           <div className="flex items-center gap-3">
             <span className="relative flex h-3 w-3">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#10b981] opacity-75" />
@@ -293,7 +293,7 @@ export function CommunicationUplink() {
         </div>
 
         {/* Form */}
-        <form onSubmit={submit} className="panel p-5 sm:p-6" noValidate>
+        <form onSubmit={submit} className="panel neon-surface neon-cyan p-5 sm:p-6" noValidate>
           <div className="space-y-4">
             <FormField
               id="contact-name"
