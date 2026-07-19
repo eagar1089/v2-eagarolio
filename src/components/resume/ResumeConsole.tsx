@@ -79,7 +79,7 @@ export function ResumeConsole() {
       aria-label="Resume console"
     >
       <SectionHeader
-        kicker="06 - Resume Console"
+        kicker="05 - Resume Console"
         title="The résumé, packaged as an operational asset."
         description="Preview, download, or read a summary of focus areas, projects, and skill clusters."
       />

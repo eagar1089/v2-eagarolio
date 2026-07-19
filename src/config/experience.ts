@@ -12,12 +12,14 @@ export interface MissionEntry {
   responsibilities: string[];
   tools: string[];
   lessons: string[];
+  experience?: string;
   relatedProjects?: string[]; // project slugs
   projectHighlights?: {
     name: string;
     description: string;
     status: "current" | "completed" | "degree";
     url?: string;
+    projectSlug?: string;
   }[];
 }
 
@@ -38,6 +40,7 @@ export const missionLog: MissionEntry[] = [
     period: "November 2021 - February 2022",
     version: "v2.0",
     title: "Joined Justdial - Linux Administrator",
+    experience: "3 months",
     focus: "Started my professional career at Justdial as a Linux Administrator, learning how production systems are operated, supported, and troubleshot in a real working environment.",
     systems: ["Linux administration", "Production troubleshooting", "System operations"],
     responsibilities: [
@@ -47,6 +50,26 @@ export const missionLog: MissionEntry[] = [
     ],
     tools: ["Linux", "Troubleshooting"],
     lessons: ["Gained initial hands-on experience supporting production systems"],
+    projectHighlights: [
+      {
+        name: "F5 LiveOps Dashboard",
+        description: "Operations dashboard built to improve visibility and understanding of the F5 BIG-IP environment.",
+        status: "completed",
+        projectSlug: "f5-liveops",
+      },
+      {
+        name: "Modern Server Inventory Platform",
+        description: "Modernisation work for server inventory, operational data access, and responsive administration workflows.",
+        status: "completed",
+        projectSlug: "server-inventory-platform",
+      },
+      {
+        name: "Infrastructure Data Collector",
+        description: "Lightweight collection workflow for sending consistent Linux infrastructure data to central systems.",
+        status: "completed",
+        projectSlug: "infrastructure-data-collector",
+      },
+    ],
   },
   {
     id: "be-degree",
@@ -100,6 +123,7 @@ export const missionLog: MissionEntry[] = [
     period: "June 2022 - Present",
     version: "v4.0",
     title: "Rejoined Justdial - Linux Administrator",
+    experience: "4+ years",
     focus: "Rejoined Justdial in June 2022 while pursuing a degree. I continue as a Linux Administrator and contribute to internal monitoring, inventory, data-collection, and web application work.",
     systems: ["Linux administration", "Application deployment", "Web development", "Production support"],
     responsibilities: [
@@ -119,21 +143,7 @@ export const missionLog: MissionEntry[] = [
         name: "Distributed Cron Monitoring Platform",
         description: "Current Justdial project providing centralised cron visibility, auditing, and change tracking across Linux infrastructure.",
         status: "current",
-      },
-      {
-        name: "F5 LiveOps Dashboard",
-        description: "Operations dashboard built to improve visibility and understanding of the F5 BIG-IP environment.",
-        status: "completed",
-      },
-      {
-        name: "Modern Server Inventory Platform",
-        description: "Modernisation work for server inventory, operational data access, and responsive administration workflows.",
-        status: "completed",
-      },
-      {
-        name: "Infrastructure Data Collector",
-        description: "Lightweight collection workflow for sending consistent Linux infrastructure data to central systems.",
-        status: "completed",
+        projectSlug: "distributed-cron-monitoring",
       },
     ],
   },
